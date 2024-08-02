@@ -4,39 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Song Details</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+</style>
 </head>
 <body>
-    <div id="songDetails"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Lyrics</th>
+                <th>Music</th>
+                <th>Arranger</th>
+                <th>CD Title</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody id="songTable"></tbody>
+    </table>
 
 <script>
     fetch('song.json')
         .then(response => response.json())
         .then(songs => {
-            fetch('cd.json')
+            fetch('CD.json')
                 .then(response => response.json())
                 .then(CDs => {
-                    const songDetails = document.getElementById('songDetails');
-                    let output = '';
-                    console.log(songs);
-                    console.log(CDs);
+                    const songTable = document.getElementById('songTable');
+
                     songs.forEach(song => {
                         const CD = CDs.find(cd => cd.CDtitle === song.CDtitle);
                         if (CD) {
-                            output += `
-                                <div>
-                                    <h2>${song.title}</h2>
-                                    <p><strong>Lyrics:</strong> ${song.lyrics}</p>
-                                    <p><strong>Music:</strong> ${song.music}</p>
-                                    <p><strong>Arranger:</strong> ${song.arranger}</p>
-                                    <p><strong>CD Title:</strong> ${song.CDtitle}</p>
-                                    <p><strong>Release Date:</strong> ${CD.date}</p>
-                                    <hr>
-                                </div>
+                            const row = `
+                                <tr>
+                                    <td>${song.title}</td>
+                                    <td>${song.lyrics}</td>
+                                    <td>${song.music}</td>
+                                    <td>${song.arranger}</td>
+                                    <td>${song.CDtitle}</td>
+                                    <td>${CD.date}</td>
+                                </tr>
                             `;
+                            songTable.innerHTML += row;
                         }
                     });
-
-                    songDetails.innerHTML = output;
                 })
                 .catch(error => console.error('Failed to fetch CD data:', error));
         })
