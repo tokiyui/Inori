@@ -17,7 +17,8 @@
                 .then(CDs => {
                     const songDetails = document.getElementById('songDetails');
                     let output = '';
-
+                    console.log(songs);
+                    console.log(CDs);
                     songs.forEach(song => {
                         const CD = CDs.find(cd => cd.CDtitle === song.CDtitle);
                         if (CD) {
