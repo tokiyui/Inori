@@ -12,7 +12,7 @@
     fetch('song.json')
         .then(response => response.json())
         .then(songs => {
-            fetch('CD.json')
+            fetch('cd.json')
                 .then(response => response.json())
                 .then(CDs => {
                     const songDetails = document.getElementById('songDetails');
