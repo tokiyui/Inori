@@ -45,12 +45,12 @@
                         const matchingCDs = CDs.filter(cd => cd.CDtitle === song.CDtitle);
                         if (matchingCDs.length > 0) {
                             const oldestDate = matchingCDs.reduce((oldest, current) => {
-                                return new Date(current.date) < new Date(oldest.date) ? current : oldest;
+                                const oldestDate = new Date(current.date);
+                                const currentDate = new Date(oldest.date);
+                                return oldestDate < currentDate ? current : oldest;
                             });
 
-                            const formattedDate = new Date(oldestDate.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-
-                            const japaneseFormattedDate = new Date(oldestDate.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' });
+                            const formattedDate = matchingCDs.length > 0 ? new Date(oldestDate.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) : 'No release date found';
 
                             const row = `
                                 <tr>
@@ -59,12 +59,11 @@
                                     <td>${song.music}</td>
                                     <td>${song.arranger}</td>
                                     <td>${song.CDtitle}</td>
-                                    <td>${japaneseFormattedDate}</td>
+                                    <td>${oldestDate.date}</td>
                                 </tr>
                             `;
                             songTable.innerHTML += row;
                         } else {
-                            console.log(`No matching CD found for song: ${song.title}`);
                             const row = `
                                 <tr>
                                     <td>${song.title}</td>
