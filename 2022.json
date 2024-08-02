@@ -1,0 +1,169 @@
+[
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2022 glow 兵庫公演・ツアーファイナル",
+        "tourtitle": "Inori Minase LIVE TOUR 2022 glow",
+        "date": "2022年10月8日",
+        "venue": "神戸国際会館こくさいホール",
+        "id": "2022100801",
+        "setlist": [
+            "sunrise glow(overture)",
+            "僕らだけの鼓動",
+            "Step Up!",
+            "Catch the Rainbow!",
+            "Wonder Caravan!",
+            "風色Letter",
+            "We Are The Music",
+            "Melty night",
+            "夏の約束",
+            "八月のスーベニア",
+            "REAL-EYES",
+            "HELLO HORIZON",
+            "Starry Wish",
+            "Will",
+            "星屑のコントレイル",
+            "パレオトピア",
+            "心つかまえて",
+            "ココロソマリ",
+            "glow"
+        ],
+        "encore": [
+            "春空",
+            "涙のあとは",
+            "Starlight Museum"
+        ],
+        "Wencore": "僕らは今"
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2022 glow 神奈川公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2022 glow",
+        "date": "2022年10月1日",
+        "venue": "横浜アリーナ",
+        "id": "2022100101",
+        "setlist": [
+            "sunrise glow(overture)",
+            "僕らだけの鼓動",
+            "Step Up!",
+            "Catch the Rainbow!",
+            "Wonder Caravan!",
+            "風色Letter",
+            "We Are The Music",
+            "Melty night",
+            "夏の約束",
+            "八月のスーベニア",
+            "REAL-EYES",
+            "HELLO HORIZON",
+            "Starry Wish",
+            "僕らは今",
+            "星屑のコントレイル",
+            "パレオトピア",
+            "心つかまえて",
+            "ココロソマリ",
+            "glow"
+        ],
+        "encore": [
+            "今を僕らしく生きてくために",
+            "コイセヨオトメ",
+            "Starlight Museum"
+        ],
+        "Wencore": "harmony ribbon"
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2022 glow 福岡公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2022 glow",
+        "date": "2022年9月24日",
+        "venue": "福岡サンパレス",
+        "id": "2022092401",
+        "setlist": [
+            "sunrise glow(overture)",
+            "僕らだけの鼓動",
+            "Step Up!",
+            "Catch the Rainbow!",
+            "Wonder Caravan!",
+            "風色Letter",
+            "We Are The Music",
+            "Melty night",
+            "夏の約束",
+            "八月のスーベニア",
+            "REAL-EYES",
+            "HELLO HORIZON",
+            "Starry Wish",
+            "僕らは今",
+            "Will",
+            "パレオトピア",
+            "心つかまえて",
+            "ココロソマリ",
+            "glow"
+        ],
+        "encore": [
+            "今を僕らしく生きてくために",
+            "コイセヨオトメ",
+            "Starlight Museum"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2022 glow 宮城公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2022 glow",
+        "date": "2022年9月17日",
+        "venue": "仙台サンプラザホール",
+        "id": "2022091701",
+        "setlist": [
+            "sunrise glow(overture)",
+            "僕らだけの鼓動",
+            "Step Up!",
+            "Catch the Rainbow!",
+            "Wonder Caravan!",
+            "風色Letter",
+            "We Are The Music",
+            "Melty night",
+            "夏の約束",
+            "八月のスーベニア",
+            "REAL-EYES",
+            "HELLO HORIZON",
+            "Starry Wish",
+            "僕らは今",
+            "星屑のコントレイル",
+            "パレオトピア",
+            "心つかまえて",
+            "ココロソマリ",
+            "glow"
+        ],
+        "encore": [
+            "今を僕らしく生きてくために",
+            "コイセヨオトメ",
+            "Starlight Museum"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2022 glow 愛知公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2022 glow",
+        "date": "2022年9月10日",
+        "venue": "名古屋国際会議場",
+        "id": "2022091001",
+        "setlist": [
+            "sunrise glow(overture)",
+            "僕らだけの鼓動",
+            "Step Up!",
+            "Catch the Rainbow!",
+            "Wonder Caravan!",
+            "風色Letter",
+            "We Are The Music",
+            "Melty night",
+            "夏の約束",
+            "八月のスーベニア",
+            "REAL-EYES",
+            "HELLO HORIZON",
+            "Starry Wish",
+            "僕らは今",
+            "Will",
+            "パレオトピア",
+            "心つかまえて",
+            "ココロソマリ",
+            "glow"
+        ],
+        "encore": [
+            "春空",
+            "涙のあとは",
+            "Starlight Museum"
+        ]
+    }
+]
