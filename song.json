@@ -23,7 +23,10 @@
     {
         "title": "あの日の空へ",
         "lyrics": "藤末樹",
-        "music": "藤末樹、大谷奈津子",
+        "music": [
+            "藤末樹",
+            "大谷奈津子"
+        ],
         "arranger": "Mitsu.J",
         "length": "4:40",
         "CDtitle": "夢のつぼみ",
@@ -62,7 +65,10 @@
     {
         "title": "Starry Wish",
         "lyrics": "nozomi",
-        "music": "KOUGA, nozomi",
+        "music": [
+            "KOUGA",
+            "nozomi"
+        ],
         "arranger": "KOUGA",
         "length": "4:07",
         "CDtitle": [
@@ -195,7 +201,10 @@
         "title": "夏夢",
         "lyrics": "森村メラ",
         "music": "松本サトシ",
-        "arranger": "遠藤直弥・松本サトシ",
+        "arranger": [
+            "遠藤直弥",
+            "松本サトシ"
+        ],
         "length": "4:59",
         "CDtitle": "アイマイモコ",
         "info": ""
