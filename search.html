@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Setlist Analysis</title>
+<title>Setlist Information</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -46,27 +46,21 @@ function searchSetlist() {
     const name = queryParams.name;
 
     loadJSON('setlist.json', function(data) {
-        const liveData = data.find(item => item.name === name);
-        console.log(name);
+        const liveData = data.find(item => item.LIVEtitle === name);
 
         if (!liveData) {
             document.getElementById('result').innerHTML = '<p>No live information found for the provided name.</p>';
             return;
         }
 
-        const setlistCount = liveData.setlist.length;
-        const encoreCount = liveData.encore.length;
-        const wEncoreCount = liveData.Wencore.split(" ").length;
-
-        let maxIdDate = liveData.date.substring(0, 8);
+        const liveTitle = liveData.LIVEtitle;
+        const date = liveData.date;
 
         // Display the results
         const resultDiv = document.getElementById('result');
         resultDiv.innerHTML = `
-            <p>Number of songs in setlist: ${setlistCount}</p>
-            <p>Number of songs in encore: ${encoreCount}</p>
-            <p>Number of words in Wencore: ${wEncoreCount}</p>
-            <p>Date with maximum ID: ${maxIdDate}</p>
+            <p>LIVE Title: ${liveTitle}</p>
+            <p>Date: ${date}</p>
         `;
     });
 }
