@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Song Details</title>
+</head>
+<body>
+    <div id="songDetails"></div>
+
+<script>
+    fetch('song.json')
+        .then(response => response.json())
+        .then(songs => {
+            fetch('CD.json')
+                .then(response => response.json())
+                .then(CDs => {
+                    const songDetails = document.getElementById('songDetails');
+                    let output = '';
+
+                    songs.forEach(song => {
+                        const CD = CDs.find(cd => cd.CDtitle === song.CDtitle);
+                        output += `
+                            <div>
+                                <h2>${song.title}</h2>
+                                <p><strong>Lyrics:</strong> ${song.lyrics}</p>
+                                <p><strong>Music:</strong> ${song.music}</p>
+                                <p><strong>Arranger:</strong> ${song.arranger}</p>
+                                <p><strong>CD Title:</strong> ${song.CDtitle}</p>
+                                <p><strong>Release Date:</strong> ${CD.date}</p>
+                                <hr>
+                            </div>
+                        `;
+                    });
+
+                    songDetails.innerHTML = output;
+                })
+                .catch(error => console.error('Failed to fetch CD data:', error));
+        })
+        .catch(error => console.error('Failed to fetch song data:', error));
+</script>
+</body>
+</html>
