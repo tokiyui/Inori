@@ -12,18 +12,13 @@
 </style>
 </head>
 <body>
-<div>
-    <label for="idInput">Enter ID:</label>
-    <input type="text" id="idInput" placeholder="Enter ID">
-    <button onclick="searchSetlist()">Search</button>
-</div>
 <div id="result"></div>
 
 <script>
-function loadJSON(callback) {
+function loadJSON(url, callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'setlist.json', true);
+    xobj.open('GET', url, true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             callback(JSON.parse(xobj.responseText));
@@ -32,14 +27,29 @@ function loadJSON(callback) {
     xobj.send(null);
 }
 
-function searchSetlist() {
-    const idInput = document.getElementById('idInput').value;
+function parseQueryString(url) {
+    var params = {};
+    var parser = document.createElement('a');
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return params;
+}
 
-    loadJSON(function(data) {
-        const liveData = data.find(item => item.id === idInput);
+function searchSetlist() {
+    const url = window.location.href;
+    const queryParams = parseQueryString(url);
+    const name = queryParams.name;
+
+    loadJSON('setlist.json', function(data) {
+        const liveData = data.find(item => item.name === name);
 
         if (!liveData) {
-            document.getElementById('result').innerHTML = '<p>No live information found for the provided ID.</p>';
+            document.getElementById('result').innerHTML = '<p>No live information found for the provided name.</p>';
             return;
         }
 
@@ -59,6 +69,9 @@ function searchSetlist() {
         `;
     });
 }
+
+// Call searchSetlist function on page load
+searchSetlist();
 </script>
 </body>
 </html>
