@@ -35,7 +35,10 @@
         "music": "多田慎也",
         "arranger": "鈴木雅也",
         "length": "6:17",
-        "CDtitle": "harmony ribbon",
+        "CDtitle": [
+            "harmony ribbon",
+            "Innocent flower"
+        ],        
         "info": ""
     },
     {
@@ -62,7 +65,10 @@
         "music": "KOUGA, nozomi",
         "arranger": "KOUGA",
         "length": "4:07",
-        "CDtitle": "Starry Wish",
+        "CDtitle": [
+            "Starry Wish",
+            "Innocent flower"
+        ],           
         "info": ""
     },
     {
@@ -129,15 +135,6 @@
         "info": ""
     },
     {
-        "title": "Starry Wish",
-        "lyrics": "nozomi",
-        "music": "KOUGA、nozomi",
-        "arranger": "KOUGA",
-        "length": "4:08",
-        "CDtitle": "Innocent flower",
-        "info": ""
-    },
-    {
         "title": "Will",
         "lyrics": "藤原隆之",
         "music": "中野ゆう",
@@ -165,15 +162,6 @@
         "info": ""
     },
     {
-        "title": "harmony ribbon",
-        "lyrics": "多田慎也",
-        "music": "多田慎也",
-        "arranger": "鈴木雅也",
-        "length": "6:17",
-        "CDtitle": "Innocent flower",
-        "info": ""
-    },
-    {
         "title": "Innocent flower",
         "lyrics": "藤林聖子",
         "music": "KOUGA",
@@ -188,7 +176,10 @@
         "music": "Haggy Rock",
         "arranger": "白戸佑輔",
         "length": "4:21",
-        "CDtitle": "アイマイモコ",
+        "CDtitle": [
+            "アイマイモコ",
+            "BLUE COMPASS"
+        ],
         "info": ""
     },
     {
@@ -215,8 +206,11 @@
         "music": "藤永龍太郎 (Elements Garden)",
         "arranger": "藤永龍太郎 (Elements Garden)",
         "length": "4:29",
-        "CDtitle": "Ready Steady Go!",
-        "info": ""
+        "CDtitle": [
+            "Ready Steady Go!",
+            "BLUE COMPASS"
+        ],
+            "info": ""
     },
     {
         "title": "Happy Birthday",
@@ -246,15 +240,6 @@
         "info": ""
     },
     {
-        "title": "Ready Steady Go!",
-        "lyrics": "藤林聖子",
-        "music": "藤永龍太郎 (Elements Garden)",
-        "arranger": "藤永龍太郎 (Elements Garden)",
-        "length": "4:28",
-        "CDtitle": "BLUE COMPASS",
-        "info": ""
-    },
-    {
         "title": "identity",
         "lyrics": "松原さらり",
         "music": "南田健吾",
@@ -278,15 +263,6 @@
         "music": "石田秀登",
         "arranger": "EFFY",
         "length": "4:50",
-        "CDtitle": "BLUE COMPASS",
-        "info": ""
-    },
-    {
-        "title": "アイマイモコ",
-        "lyrics": "Haggy Rock",
-        "music": "Haggy Rock",
-        "arranger": "白戸佑輔",
-        "length": "4:22",
         "CDtitle": "BLUE COMPASS",
         "info": ""
     },
@@ -350,7 +326,10 @@
         "music": "加藤裕介",
         "arranger": "加藤裕介",
         "length": "4:29",
-        "CDtitle": "TRUST IN ETERNITY",
+        "CDtitle": [
+            "TRUST IN ETERNITY",
+            "Catch the Rainbow!"
+        ]
         "info": ""
     },
     {
@@ -377,7 +356,10 @@
         "music": "新田目翔",
         "arranger": "新田目翔",
         "length": "4:21",
-        "CDtitle": "Wonder Caravan!",
+        "CDtitle": [
+            "Wonder Caravan!",
+            "Catch the Rainbow!"
+        ]
         "info": ""
     },
     {
@@ -426,15 +408,6 @@
         "info": ""
     },
     {
-        "title": "Wonder Caravan!",
-        "lyrics": "新田目翔",
-        "music": "新田目翔",
-        "arranger": "新田目翔",
-        "length": "4:21",
-        "CDtitle": "Catch the Rainbow!",
-        "info": ""
-    },
-    {
         "title": "今を僕らしく生きてくために",
         "lyrics": "中野領太",
         "music": "中野領太",
@@ -467,15 +440,6 @@
         "music": "中野領太",
         "arranger": "中野領太",
         "length": "5:13",
-        "CDtitle": "Catch the Rainbow!",
-        "info": ""
-    },
-    {
-        "title": "TRUST IN ETERNITY",
-        "lyrics": "岩里祐穂",
-        "music": "加藤裕介",
-        "arranger": "加藤裕介",
-        "length": "4:30",
         "CDtitle": "Catch the Rainbow!",
         "info": ""
     },
@@ -513,7 +477,7 @@
         "arranger": "藤永龍太郎 (Elements Garden)",
         "length": "3:38",
         "CDtitle": "まっすぐに、トウメイに。",
-        "info": "デジタルリリース"
+        "info": ""
     },
     {
         "title": "ココロソマリ",
@@ -521,7 +485,10 @@
         "music": "櫻澤ヒカル",
         "arranger": "白戸佑輔",
         "length": "4:49",
-        "CDtitle": "ココロソマリ",
+        "CDtitle": [
+            "ココロソマリ",
+            "glow"
+        ]
         "info": ""
     },
     {
@@ -530,7 +497,10 @@
         "music": "藤永龍太郎 (Elements Garden)",
         "arranger": "藤永龍太郎",
         "length": "6:29",
-        "CDtitle": "ココロソマリ",
+        "CDtitle": [
+            "ココロソマリ",
+            "glow"
+        ]
         "info": ""
     },
     {
@@ -548,7 +518,10 @@
         "music": "櫻澤ヒカル",
         "arranger": "櫻澤ヒカル",
         "length": "5:07",
-        "CDtitle": "Starlight Museum",
+        "CDtitle": [
+            "Starlight Museum",
+            "glow"
+        ]
         "info": ""
     },
     {
@@ -575,7 +548,10 @@
         "music": "白戸佑輔",
         "arranger": "白戸佑輔",
         "length": "5:10",
-        "CDtitle": "HELLO HORIZON",
+        "CDtitle": [
+            "HELLO HORIZON",
+            "glow"
+        ]
         "info": ""
     },
     {
@@ -602,7 +578,10 @@
         "music": "藤間仁(Elements Garden)",
         "arranger": "藤間仁(Elements Garden)",
         "length": "4:07",
-        "CDtitle": "REAL-EYES",
+        "CDtitle": [
+            "REAL-EYES",
+            "glow"
+        ]
         "info": ""
     },
     {
@@ -642,29 +621,11 @@
         "info": ""
     },
     {
-        "title": "Starlight Museum",
-        "lyrics": "櫻澤ヒカル・水瀬いのり",
-        "music": "櫻澤ヒカル",
-        "arranger": "櫻澤ヒカル",
-        "length": "5:04",
-        "CDtitle": "glow",
-        "info": ""
-    },
-    {
         "title": "Melty night",
         "lyrics": "hAck-?.",
         "music": "KOUGA",
         "arranger": "KOUGA",
         "length": "4:33",
-        "CDtitle": "glow",
-        "info": ""
-    },
-    {
-        "title": "ココロソマリ",
-        "lyrics": "水瀬いのり",
-        "music": "櫻澤ヒカル",
-        "arranger": "白戸佑輔",
-        "length": "4:50",
         "CDtitle": "glow",
         "info": ""
     },
@@ -676,24 +637,6 @@
         "length": "5:11",
         "CDtitle": "glow",
         "info": ""
-    },
-    {
-        "title": "HELLO HORIZON",
-        "lyrics": "岩里祐穂",
-        "music": "白戸佑輔",
-        "arranger": "白戸佑輔",
-        "length": "5:08",
-        "CDtitle": "glow",
-        "info": ""
-    },
-    {
-        "title": "REAL-EYES",
-        "lyrics": "RUCCA",
-        "music": "藤間仁 (Elements Garden)",
-        "arranger": "藤間仁 (Elements Garden)",
-        "length": "4:09",
-        "CDtitle": "glow",
-        "info": "デジタルリリース"
     },
     {
         "title": "パレオトピア",
@@ -710,15 +653,6 @@
         "music": "多田慎也",
         "arranger": "島田尚",
         "length": "4:35",
-        "CDtitle": "glow",
-        "info": ""
-    },
-    {
-        "title": "僕らは今",
-        "lyrics": "岩里祐穂",
-        "music": "藤永龍太郎 (Elements Garden)",
-        "arranger": "藤永龍太郎 (Elements Garden)",
-        "length": "6:27",
         "CDtitle": "glow",
         "info": ""
     },
