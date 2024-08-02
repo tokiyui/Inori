@@ -46,7 +46,7 @@ function searchSetlist() {
     const name = queryParams.name;
 
     loadJSON('setlist.json', function(data) {
-        const liveData = data.find(item => item.LIVEtitle === name);
+        const liveData = data.find(item => item.LIVEtitle.toLowerCase() === name.toLowerCase());
 
         if (!liveData) {
             document.getElementById('result').innerHTML = '<p>No live information found for the provided name.</p>';
