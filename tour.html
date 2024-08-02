@@ -63,8 +63,8 @@ function displaySetlist() {
         }
 
         const tableRows = matchingData.map(item => {
-            const setlistItems = item.setlist.map(song => `<td>${song}</td>`).join('');
-            const encoreItems = item.encore.map(song => `<td>${song}</td>`).join('');
+            const setlistItems = item.setlist.map(song => `<tr><td>${song}</td></tr>`).join('');
+            const encoreItems = item.encore.map(song => `<tr><td>${song}</td></tr>`).join('');
             return `
                 <tr>
                     <th>LIVE Title</th>
@@ -80,11 +80,11 @@ function displaySetlist() {
                 </tr>
                 <tr>
                     <th>Setlist</th>
-                    <td>${setlistItems}</td>
+                    ${setlistItems}
                 </tr>
                 <tr>
                     <th>Encore</th>
-                    <td>${encoreItems}</td>
+                    ${encoreItems}
                 </tr>
                 <tr>
                     <th>Wencore</th>
