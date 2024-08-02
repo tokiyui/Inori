@@ -47,7 +47,7 @@ if (!targetLiveId) {
                     const renderSetlist = setlist => {
                         let setlistHTML = '<ul>';
                         setlist.forEach((song, index) => {
-                            setlistHTML += `<li>${index + 1}. ${song}</li>`;
+                            setlistHTML += `<p>${index + 1}. ${song}</p>`;
                         });
                         setlistHTML += '</ul>';
                         return setlistHTML;
@@ -59,7 +59,7 @@ if (!targetLiveId) {
                         }
                         let encoreHTML = '<ul>';
                         encore.forEach((song, index) => {
-                            encoreHTML += `${index + 1}. ${song}`;
+                            encoreHTML += `<p>${index + 1}. ${song}</p>`;
                         });
                         encoreHTML += '</ul>';
                         return encoreHTML;
@@ -68,7 +68,6 @@ if (!targetLiveId) {
                     const html = `
                         <h1>${liveData.LIVEtitle}</h1>
                         <p>${liveData.date} (${getDayOfWeek(liveData.date)}) @${liveData.venue}</p>
-                        <h2>Setlist</h2>
                         ${renderSetlist(liveData.setlist)}
                         ${liveData.encore && liveData.encore.length > 0 ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
                         ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p>${liveData.Wencore}</p>` : ''}
