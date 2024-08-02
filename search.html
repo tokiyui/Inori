@@ -33,4 +33,32 @@ function loadJSON(callback) {
 }
 
 function searchSetlist() {
-    const id
+    const idInput = document.getElementById('idInput').value;
+
+    loadJSON(function(data) {
+        const liveData = data.find(item => item.id === idInput);
+
+        if (!liveData) {
+            document.getElementById('result').innerHTML = '<p>No live information found for the provided ID.</p>';
+            return;
+        }
+
+        const setlistCount = liveData.setlist.length;
+        const encoreCount = liveData.encore.length;
+        const wEncoreCount = liveData.Wencore.split(" ").length;
+
+        let maxIdDate = liveData.date.substring(0, 8);
+
+        // Display the results
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+            <p>Number of songs in setlist: ${setlistCount}</p>
+            <p>Number of songs in encore: ${encoreCount}</p>
+            <p>Number of words in Wencore: ${wEncoreCount}</p>
+            <p>Date with maximum ID: ${maxIdDate}</p>
+        `;
+    });
+}
+</script>
+</body>
+</html>
