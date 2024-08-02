@@ -9,6 +9,15 @@
         font-family: Arial, sans-serif;
         margin: 20px;
     }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
 </style>
 </head>
 <body>
@@ -53,23 +62,36 @@ function displaySetlist() {
             return;
         }
 
-        const setlistInfo = matchingData.map(item => `
-            <h2>${item.LIVEtitle}</h2>
-            <p>Date: ${item.date}</p>
-            <p>Venue: ${item.venue}</p>
-            <h3>Setlist:</h3>
-            <ul>
-                ${item.setlist.map(song => `<li>${song}</li>`).join('')}
-            </ul>
-            <h3>Encore:</h3>
-            <ul>
-                ${item.encore.map(song => `<li>${song}</li>`).join('')}
-            </ul>
-            <p>Wencore: ${item.Wencore}</p>
-            <hr>
+        const tableHeaders = `
+            <tr>
+                <th>LIVE Title</th>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>Setlist</th>
+                <th>Encore</th>
+                <th>Wencore</th>
+            </tr>
+        `;
+
+        const tableRows = matchingData.map(item => `
+            <tr>
+                <td>${item.LIVEtitle}</td>
+                <td>${item.date}</td>
+                <td>${item.venue}</td>
+                <td>${item.setlist.join('<br>')}</td>
+                <td>${item.encore.join('<br>')}</td>
+                <td>${item.Wencore}</td>
+            </tr>
         `).join('');
 
-        document.getElementById("setlistDetails").innerHTML = setlistInfo;
+        const table = `
+            <table>
+                ${tableHeaders}
+                ${tableRows}
+            </table>
+        `;
+
+        document.getElementById("setlistDetails").innerHTML = table;
     });
 }
 </script>
