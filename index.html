@@ -1,17 +1,57 @@
-fetch('song.json')
-    .then(response => response.json())
-    .then(songs => {
-        fetch('CD.json')
-            .then(response => response.json())
-            .then(CDs => {
-                const songTable = document.getElementById('songTable');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Song Details</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-                songs.forEach(song => {
-                    song.CDtitle.forEach(cdTitle => {
-                        const matchingCD = CDs.find(cd => cd.CDtitle === cdTitle);
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Lyrics</th>
+                <th>Music</th>
+                <th>Arranger</th>
+                <th>CD Title</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody id="songTable"></tbody>
+    </table>
 
-                        if (matchingCD) {
-                            const formattedDate = new Date(matchingCD.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+<script>
+    fetch('song.json')
+        .then(response => response.json())
+        .then(songs => {
+            fetch('CD.json')
+                .then(response => response.json())
+                .then(CDs => {
+                    const songTable = document.getElementById('songTable');
+
+                    songs.forEach(song => {
+                        const matchingCDs = CDs.filter(cd => cd.CDtitle === song.CDtitle[0]);
+                        const matchingCDs = CDs.filter(cd => cd.CDtitle === song.CDtitle[1]);
+                        if (matchingCDs.length > 0) {
+                            const oldestDate = matchingCDs.reduce((oldest, current) => {
+                                const oldestDate = new Date(current.date);
+                                const currentDate = new Date(oldest.date);
+                                return oldestDate < currentDate ? current : oldest;
+                            });
+
+                            const formattedDate = matchingCDs.length > 0 ? new Date(oldestDate.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) : 'No release date found';
 
                             const row = `
                                 <tr>
@@ -19,8 +59,8 @@ fetch('song.json')
                                     <td>${song.lyrics}</td>
                                     <td>${song.music}</td>
                                     <td>${song.arranger}</td>
-                                    <td>${cdTitle}</td>
-                                    <td>${formattedDate}</td>
+                                    <td>${song.CDtitle}</td>
+                                    <td>${oldestDate.date}</td>
                                 </tr>
                             `;
                             songTable.innerHTML += row;
@@ -31,15 +71,17 @@ fetch('song.json')
                                     <td>${song.lyrics}</td>
                                     <td>${song.music}</td>
                                     <td>${song.arranger}</td>
-                                    <td>${cdTitle}</td>
+                                    <td>${song.CDtitle}</td>
                                     <td>No release date found</td>
                                 </tr>
                             `;
                             songTable.innerHTML += row;
                         }
                     });
-                });
-            })
-            .catch(error => console.error('Failed to fetch CD data:', error));
-    })
-    .catch(error => console.error('Failed to fetch song data:', error));
+                })
+                .catch(error => console.error('Failed to fetch CD data:', error));
+        })
+        .catch(error => console.error('Failed to fetch song data:', error));
+</script>
+</body>
+</html>
