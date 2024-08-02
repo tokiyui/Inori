@@ -12,6 +12,7 @@
 </style>
 </head>
 <body>
+<h1 id="title"></h1>
 <div id="results"></div>
 
 <script>
@@ -52,7 +53,10 @@ function searchSetlist() {
             (item.Wencore && item.Wencore === name)
         );
 
-        if (matchingData.length === 0) {
+        const count = matchingData.length;
+
+        if (count === 0) {
+            document.getElementById('title').innerText = `${name}の披露一覧：0回`;
             document.getElementById('results').innerHTML = '<p>No live information found for the provided name.</p>';
             return;
         }
@@ -62,6 +66,8 @@ function searchSetlist() {
         resultDiv.innerHTML = matchingData.map(item => `
             <p>${item.date} ${item.LIVEtitle}</p>
         `).join('');
+
+        document.getElementById('title').innerText = `${name}の披露一覧：${count}回`;
     });
 }
 
