@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setlist Information</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+<label for="tourSelect">Choose a Tour:</label>
+<select id="tourSelect" onchange="displaySetlist()">
+    <option value="">Select a Tour</option>
+    <option value="Inori Minase LIVE TOUR 2018 BLUE COMPASS">Inori Minase LIVE TOUR 2018 BLUE COMPASS</option>
+    <option value="Inori Minase LIVE TOUR 2019 Catch the Rainbow!">Inori Minase LIVE TOUR 2019 Catch the Rainbow!</option>
+    <option value="Inori Minase LIVE TOUR 2021 HELLO HORIZON">Inori Minase LIVE TOUR 2021 HELLO HORIZON</option>
+    <option value="Inori Minase LIVE TOUR 2022 glow">Inori Minase LIVE TOUR 2022 glow</option>
+    <option value="Inori Minase LIVE TOUR 2023 SCRAP ART">Inori Minase LIVE TOUR 2023 SCRAP ART</option>
+</select>
+
+<div id="setlistDetails"></div>
+
+<script>
+function loadJSON(url, callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', url, true);
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(JSON.parse(xobj.responseText));
+        }
+    };
+    xobj.send(null);
+}
+
+function displaySetlist() {
+    const selectedTour = document.getElementById("tourSelect").value;
+
+    if (selectedTour === "") {
+        document.getElementById("setlistDetails").innerHTML = "";
+        return;
+    }
+
+    loadJSON('setlist.json', function(data) {
+        const matchingData = data.filter(item => item.tourtitle === selectedTour);
+
+        if (matchingData.length === 0) {
+            document.getElementById("setlistDetails").innerHTML = '<p>No setlist information available for this tour.</p>';
+            return;
+        }
+
+        const setlistInfo = matchingData.map(item => `
+            <h2>${item.LIVEtitle}</h2>
+            <p>Date: ${item.date}</p>
+            <p>Venue: ${item.venue}</p>
+            <h3>Setlist:</h3>
+            <ul>
+                ${item.setlist.map(song => `<li>${song}</li>`).join('')}
+            </ul>
+            <h3>Encore:</h3>
+            <ul>
+                ${item.encore.map(song => `<li>${song}</li>`).join('')}
+            </ul>
+            <p>Wencore: ${item.Wencore}</p>
+            <hr>
+        `).join('');
+
+        document.getElementById("setlistDetails").innerHTML = setlistInfo;
+    });
+}
+</script>
+</body>
+</html>
