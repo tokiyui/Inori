@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIVE Information</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+</style>
+</head>
+<body>
+<div id="liveInfo"></div>
+
+<script>
+const targetLiveId = '2023102901'; // 検索するID
+
+fetch('2023_live_data.json') // JSONファイルのパスを指定
+    .then(response => response.json())
+    .then(data => {
+        const liveInfo = document.getElementById('liveInfo');
+
+        const getDayOfWeek = dateString => {
+            const days = ['日', '月', '火', '水', '木', '金', '土'];
+            const date = new Date(dateString.replace(/年|月|日/g, '/'));
+            return days[date.getDay()];
+        };
+
+        const renderSetlist = setlist => {
+            let setlistHTML = '<ul>';
+            setlist.forEach((song, index) => {
+                setlistHTML += `<li>${index + 1}. ${song}</li>`;
+            });
+            setlistHTML += '</ul>';
+            return setlistHTML;
+        };
+
+        const renderEncore = encore => {
+            if (!encore || encore.length === 0) {
+                return '';
+            }
+            let encoreHTML = '<ul>';
+            encore.forEach((song, index) => {
+                encoreHTML += `<li>${index + 1}. ${song}</li>`;
+            });
+            encoreHTML += '</ul>';
+            return encoreHTML;
+        };
+
+        const liveData = data.find(item => item.id === targetLiveId); // IDが一致するライブを検索
+
+        if (liveData) {
+            const html = `
+                <h1>${liveData.LIVEtitle}</h1>
+                <p>Date: ${liveData.date} (${getDayOfWeek(liveData.date)})</p>
+                <p>Venue: ${liveData.venue}</p>
+                <h2>Setlist</h2>
+                ${renderSetlist(liveData.setlist)}
+                ${liveData.encore && liveData.encore.length > 0 ? `<h2>Encore</h2>${renderEncore(liveData.encore)}` : ''}
+                ${liveData.Wencore ? `<h2>Wencore</h2><p>${liveData.Wencore}</p>` : ''}
+            `;
+            liveInfo.innerHTML = html;
+        } else {
+            liveInfo.innerHTML = '<p>No live information found for the provided ID.</p>';
+        }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+</script>
+</body>
+</html>
