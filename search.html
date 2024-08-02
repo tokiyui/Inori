@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Setlist Information</title>
+<title>楽曲披露一覧</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -60,9 +60,7 @@ function searchSetlist() {
         // Display the results
         const resultDiv = document.getElementById('results');
         resultDiv.innerHTML = matchingData.map(item => `
-            <p>LIVE Title: ${item.LIVEtitle}</p>
-            <p>Date: ${item.date}</p>
-            <hr>
+            <p>${item.date} ${item.LIVEtitle}</p>
         `).join('');
     });
 }
