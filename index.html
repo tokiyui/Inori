@@ -43,7 +43,7 @@
 
                     songs.forEach(song => {
                         console.log(song.CDtitle);
-                        const filteredCDs = song.CDtitle.flatMap(songCDtitle => {
+                        const matchingCDs = song.CDtitle.flatMap(songCDtitle => {
                             return CDs.filter(cd => cd.CDtitle === songCDtitle);
                         });
                         if (matchingCDs.length > 0) {
