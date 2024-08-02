@@ -59,6 +59,18 @@
                                 </tr>
                             `;
                             songTable.innerHTML += row;
+                        } else {
+                            const row = `
+                                <tr>
+                                    <td>${song.title}</td>
+                                    <td>${song.lyrics}</td>
+                                    <td>${song.music}</td>
+                                    <td>${song.arranger}</td>
+                                    <td>${song.CDtitle}</td>
+                                    <td>No release date found</td>
+                                </tr>
+                            `;
+                            songTable.innerHTML += row;
                         }
                     });
                 })
