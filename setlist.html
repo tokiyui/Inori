@@ -22,12 +22,8 @@ if (!targetLiveId) {
     document.getElementById('liveInfo').innerHTML = '<p>No ID provided in the query parameters.</p>';
 } else {
     const jsonFiles = [];
-
-    // ファイル名が20**.jsonのファイルを取得
-    for (let i = 2010; i < 2025; i++) {
-        const fileName = `${i.toString().padStart(4, '0')}.json`;
-        jsonFiles.push(fileName);
-    }
+    
+    jsonFiles.push(setlist.json);
 
     let found = false;
 
