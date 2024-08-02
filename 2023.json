@@ -1,0 +1,225 @@
+[
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 神奈川公演2日目",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年10月29日",
+        "venue": "ぴあアリーナMM",
+        "id": "2023102901",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "brave climber",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "TRUST IN ETERNITY",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Morning Prism",
+            "ココロはMerry-Go-Round",
+            "Ready Steady Go!"
+        ],
+        "Wencore": "Catch the Rainbow!"
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 神奈川公演1日目",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年10月28日",
+        "venue": "ぴあアリーナMM",
+        "id": "2023102801",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "リトルシューゲイザー",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "HELLO HORIZON",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Shoo-Bee-Doo-Wap-Wap!",
+            "Future Seeker",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 福岡公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年10月14日",
+        "venue": "北九州ソレイユホール",
+        "id": "2023101401",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "リトルシューゲイザー",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "HELLO HORIZON",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Morning Prism",
+            "ココロはMerry-Go-Round",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 愛知公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年10月8日",
+        "venue": "日本特殊陶業市民会館",
+        "id": "2023100801",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "リトルシューゲイザー",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "TRUST IN ETERNITY",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Morning Prism",
+            "Future Seeker",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 宮城公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年9月24日",
+        "venue": "仙台サンプラザホール",
+        "id": "2023092401",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "brave climber",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "HELLO HORIZON",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Shoo-Bee-Doo-Wap-Wap!",
+            "ココロはMerry-Go-Round",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 兵庫公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+        "date": "2023年9月17日",
+        "venue": "ワールド記念ホール",
+        "id": "2023091701",
+        "setlist": [
+            "スクラップアート",
+            "identity",
+            "brave climber",
+            "僕らだけの鼓動",
+            "クリスタライズ",
+            "アイマイモコ",
+            "運命の赤い糸",
+            "くらりのうた",
+            "あの日の空へ",
+            "アイオライト",
+            "クータスタ",
+            "TRUST IN ETERNITY",
+            "約束のアステリズム",
+            "Million Futures",
+            "Well Wishing Word",
+            "While We Walk",
+            "Winter Wonder Wander",
+            "僕らは今"
+        ],
+        "encore": [
+            "Shoo-Bee-Doo-Wap-Wap!",
+            "Future Seeker",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "いのりまち町民集会2023 夜公演",
+        "tourtitle": "いのりまち町民集会2023",
+        "date": "2023年2月19日",
+        "venue": "両国国技館",
+        "id": "2023021902",
+        "setlist": [
+            "アイマイモコ",
+            "シネマチックダイアリー",
+            "Snow White",
+            "アルペジオ",
+            "水彩メモリー",
+            "思い出のカケラ"
+        ]
+    },
+    {
+        "LIVEtitle": "いのりまち町民集会2023 昼公演",
+        "tourtitle": "いのりまち町民集会2023",
+        "date": "2023年2月19日",
+        "venue": "両国国技館",
+        "id": "2023021901",
+        "setlist": [
+            "アイマイモコ",
+            "君色プロローグ",
+            "Snow White",
+            "アルペジオ",
+            "これからも。",
+            "My Graffiti"
+        ]
+    }
+]
