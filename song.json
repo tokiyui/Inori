@@ -5,7 +5,10 @@
         "music": "渡部チェル",
         "arranger": "渡部チェル",
         "length": "5:01",
-        "CDtitle": "夢のつぼみ",
+        "CDtitle": [
+            "夢のつぼみ",
+            "Innocent flower"
+        ]
         "info": ""
     },
     {
@@ -86,15 +89,6 @@
         "music": "渡部チェル",
         "arranger": "渡部チェル",
         "length": "4:30",
-        "CDtitle": "Innocent flower",
-        "info": ""
-    },
-    {
-        "title": "夢のつぼみ",
-        "lyrics": "絵伊子",
-        "music": "渡部チェル",
-        "arranger": "渡部チェル",
-        "length": "5:01",
         "CDtitle": "Innocent flower",
         "info": ""
     },
