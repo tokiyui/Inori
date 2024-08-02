@@ -62,36 +62,32 @@ function displaySetlist() {
             return;
         }
 
-        const tableRows = matchingData.map(item => {
-            const setlistItems = item.setlist.map(song => `<tr><td>${song}</td></tr>`).join('');
-            const encoreItems = item.encore.map(song => `<tr><td>${song}</td></tr>`).join('');
-            return `
-                <tr>
-                    <th>LIVE Title</th>
-                    <td>${item.LIVEtitle}</td>
-                </tr>
-                <tr>
-                    <th>Date</th>
-                    <td>${item.date}</td>
-                </tr>
-                <tr>
-                    <th>Venue</th>
-                    <td>${item.venue}</td>
-                </tr>
-                <tr>
-                    <th>Setlist</th>
-                    ${setlistItems}
-                </tr>
-                <tr>
-                    <th>Encore</th>
-                    ${encoreItems}
-                </tr>
-                <tr>
-                    <th>Wencore</th>
-                    <td>${item.Wencore}</td>
-                </tr>
-            `;
-        }).join('');
+        const tableRows = matchingData.map(item => `
+            <tr>
+                <th>LIVE Title</th>
+                <td>${item.LIVEtitle}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>${item.date}</td>
+            </tr>
+            <tr>
+                <th>Venue</th>
+                <td>${item.venue}</td>
+            </tr>
+            <tr>
+                <th>Setlist</th>
+                <td>${item.setlist.join('<br>')}</td>
+            </tr>
+            <tr>
+                <th>Encore</th>
+                <td>${item.encore.join('<br>')}</td>
+            </tr>
+            <tr>
+                <th>Wencore</th>
+                <td>${item.Wencore}</td>
+            </tr>
+        `).join('');
 
         const table = `
             <table>
