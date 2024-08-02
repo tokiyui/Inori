@@ -5,10 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Setlist Information</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
     table {
         border-collapse: collapse;
         width: 100%;
@@ -18,86 +14,67 @@
         padding: 8px;
         text-align: left;
     }
+    th {
+        background-color: #f2f2f2;
+    }
 </style>
 </head>
 <body>
-<label for="tourSelect">Choose a Tour:</label>
-<select id="tourSelect" onchange="displaySetlist()">
-    <option value="">Select a Tour</option>
-    <option value="Inori Minase LIVE TOUR 2018 BLUE COMPASS">Inori Minase LIVE TOUR 2018 BLUE COMPASS</option>
-    <option value="Inori Minase LIVE TOUR 2019 Catch the Rainbow!">Inori Minase LIVE TOUR 2019 Catch the Rainbow!</option>
-    <option value="Inori Minase LIVE TOUR 2021 HELLO HORIZON">Inori Minase LIVE TOUR 2021 HELLO HORIZON</option>
-    <option value="Inori Minase LIVE TOUR 2022 glow">Inori Minase LIVE TOUR 2022 glow</option>
-    <option value="Inori Minase LIVE TOUR 2023 SCRAP ART">Inori Minase LIVE TOUR 2023 SCRAP ART</option>
-</select>
+    <h2>Setlist Information</h2>
+    <table id="setlistTable"></table>
 
-<div id="setlistDetails"></div>
-
-<script>
-function loadJSON(url, callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', url, true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(JSON.parse(xobj.responseText));
-        }
-    };
-    xobj.send(null);
-}
-
-function displaySetlist() {
-    const selectedTour = document.getElementById("tourSelect").value;
-
-    if (selectedTour === "") {
-        document.getElementById("setlistDetails").innerHTML = "";
-        return;
-    }
-
-    loadJSON('setlist.json', function(data) {
-        const matchingData = data.filter(item => item.tourtitle === selectedTour);
-
-        if (matchingData.length === 0) {
-            document.getElementById("setlistDetails").innerHTML = '<p>No setlist information available for this tour.</p>';
-            return;
+    <script>
+        // Load JSON file
+        function loadJSON(file, callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', file, true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == 200) {
+                    callback(JSON.parse(xobj.responseText));
+                }
+            };
+            xobj.send(null);
         }
 
-        const tableRows = matchingData.map(item => `
-            <tr>
-                <th>LIVE Title</th>
-                <td>${item.LIVEtitle}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>${item.date}</td>
-            </tr>
-            <tr>
-                <th>Venue</th>
-                <td>${item.venue}</td>
-            </tr>
-            <tr>
-                <th>Setlist</th>
-                <td>${item.setlist.join('<br>')}</td>
-            </tr>
-            <tr>
-                <th>Encore</th>
-                <td>${item.encore.join('<br>')}</td>
-            </tr>
-            <tr>
-                <th>Wencore</th>
-                <td>${item.Wencore}</td>
-            </tr>
-        `).join('');
+        // Display setlist information
+        function displaySetlist() {
+            loadJSON('setlist.json', function(data) {
+                let tableContent = '';
+                data.forEach(item => {
+                    tableContent += `
+                        <tr>
+                            <th>LIVE Title</th>
+                            <td>${item.LIVEtitle}</td>
+                            <th>Date</th>
+                            <td>${item.date}</td>
+                        </tr>
+                        <tr>
+                            <th>Venue</th>
+                            <td>${item.venue}</td>
+                            <th>Wencore</th>
+                            <td>${item.Wencore}</td>
+                        </tr>
+                        <tr>
+                            <th>Setlist</th>
+                            <td colspan="3">${item.setlist.join('<br>')}</td>
+                        </tr>
+                        <tr>
+                            <th>Encore</th>
+                            <td colspan="3">${item.encore.join('<br>')}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="4"></th>
+                        </tr>
+                    `;
+                });
 
-        const table = `
-            <table>
-                ${tableRows}
-            </table>
-        `;
+                document.getElementById("setlistTable").innerHTML = tableContent;
+            });
+        }
 
-        document.getElementById("setlistDetails").innerHTML = table;
-    });
-}
-</script>
+        // Call displaySetlist function
+        displaySetlist();
+    </script>
 </body>
 </html>
