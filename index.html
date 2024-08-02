@@ -48,6 +48,8 @@
                                 return new Date(current.date) < new Date(oldest.date) ? current : oldest;
                             });
 
+                            const formattedDate = matchingCDs.length > 0 ? new Date(oldestDate.date).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No release date found';
+
                             const row = `
                                 <tr>
                                     <td>${song.title}</td>
@@ -55,7 +57,7 @@
                                     <td>${song.music}</td>
                                     <td>${song.arranger}</td>
                                     <td>${song.CDtitle}</td>
-                                    <td>${oldestDate.date}</td>
+                                    <td>${formattedDate}</td>
                                 </tr>
                             `;
                             songTable.innerHTML += row;
