@@ -45,16 +45,24 @@ function searchSetlist() {
     const queryParams = parseQueryString(url);
     const name = queryParams.name;
 
+    console.log('URL:', url);
+    console.log('Name:', name);
+
     loadJSON('setlist.json', function(data) {
-        const liveData = data.find(item => item.LIVEtitle.toLowerCase() === name.toLowerCase());
+        console.log('JSON Data:', data);
+        const liveData = data.find(item => item.LIVEtitle === name);
 
         if (!liveData) {
+            console.log('No live information found for the provided name:', name);
             document.getElementById('result').innerHTML = '<p>No live information found for the provided name.</p>';
             return;
         }
 
         const liveTitle = liveData.LIVEtitle;
         const date = liveData.date;
+
+        console.log('Live Title:', liveTitle);
+        console.log('Date:', date);
 
         // Display the results
         const resultDiv = document.getElementById('result');
