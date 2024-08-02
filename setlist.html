@@ -23,7 +23,7 @@ if (!targetLiveId) {
 } else {
     const jsonFiles = [];
     
-    jsonFiles.push(setlist.json);
+    jsonFiles.push("setlist.json");
 
     let found = false;
 
@@ -59,7 +59,7 @@ if (!targetLiveId) {
                         }
                         let encoreHTML = '<ul>';
                         encore.forEach((song, index) => {
-                            encoreHTML += `<li>${index + 1}. ${song}</li>`;
+                            encoreHTML += `${index + 1}. ${song}`;
                         });
                         encoreHTML += '</ul>';
                         return encoreHTML;
@@ -67,12 +67,11 @@ if (!targetLiveId) {
 
                     const html = `
                         <h1>${liveData.LIVEtitle}</h1>
-                        <p>Date: ${liveData.date} (${getDayOfWeek(liveData.date)})</p>
-                        <p>Venue: ${liveData.venue}</p>
+                        <p>${liveData.date} (${getDayOfWeek(liveData.date)}) @${liveData.venue}</p>
                         <h2>Setlist</h2>
                         ${renderSetlist(liveData.setlist)}
-                        ${liveData.encore && liveData.encore.length > 0 ? `<h2>Encore</h2>${renderEncore(liveData.encore)}` : ''}
-                        ${liveData.Wencore ? `<h2>Wencore</h2><p>${liveData.Wencore}</p>` : ''}
+                        ${liveData.encore && liveData.encore.length > 0 ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
+                        ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p>${liveData.Wencore}</p>` : ''}
                     `;
                     liveInfo.innerHTML = html;
 
