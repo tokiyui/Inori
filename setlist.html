@@ -47,7 +47,7 @@ if (!targetLiveId) {
                     const renderSetlist = setlist => {
                         let setlistHTML = '<ul>';
                         setlist.forEach((song, index) => {
-                            setlistHTML += `${index + 1}. ${song}<br>`;
+                            setlistHTML += `<p>${index + 1}. ${song}</p>`;
                         });
                         setlistHTML += '</ul>';
                         return setlistHTML;
@@ -70,7 +70,7 @@ if (!targetLiveId) {
                         <h3>${liveData.date} (${getDayOfWeek(liveData.date)}) @${liveData.venue}</h3>
                         ${renderSetlist(liveData.setlist)}
                         ${liveData.encore && liveData.encore.length > 0 ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
-                        ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p>${liveData.Wencore}</p>` : ''}
+                        ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p><ul>${liveData.Wencore}</ul></p>` : ''}
                     `;
                     liveInfo.innerHTML = html;
 
