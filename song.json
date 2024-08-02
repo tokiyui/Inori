@@ -383,7 +383,10 @@
     {
         "title": "Snow White",
         "lyrics": "FURUTA",
-        "music": "FURUTA & Dr.Lilcom",
+        "music": [
+            "FURUTA",
+            "Dr.Lilcom"
+        ],
         "arranger": "Dr.Lilcom",
         "length": "4:02",
         "CDtitle": "Wonder Caravan!",
@@ -391,7 +394,10 @@
     },
     {
         "title": "Step Up!",
-        "lyrics": "唐沢美帆･川崎智哉",
+        "lyrics": [
+            "唐沢美帆",
+            "川崎智哉"
+        ],
         "music": "川崎智哉",
         "arranger": "川崎智哉",
         "length": "3:55",
@@ -401,8 +407,14 @@
     {
         "title": "ココロはMerry-Go-Round",
         "lyrics": "叶人",
-        "music": "新田目駿･廣澤優也",
-        "arranger": "新田目駿･廣澤優也",
+        "music": [
+            "新田目駿",
+            "廣澤優也"
+        ],
+        "arranger": [
+            "新田目駿",
+            "廣澤優也"
+        ],
         "length": "4:28",
         "CDtitle": "Catch the Rainbow!",
         "info": ""
@@ -464,7 +476,10 @@
     {
         "title": "My Graffiti",
         "lyrics": "多田慎也",
-        "music": "多田慎也･島田尚",
+        "music": [
+            "多田慎也",
+            "島田尚"
+        ],
         "arranger": "島田尚",
         "length": "4:57",
         "CDtitle": "Catch the Rainbow!",
@@ -523,7 +538,10 @@
     },
     {
         "title": "Starlight Museum",
-        "lyrics": "櫻澤ヒカル・水瀬いのり",
+        "lyrics": [
+            "櫻澤ヒカル",
+            "水瀬いのり"
+        ],
         "music": "櫻澤ヒカル",
         "arranger": "櫻澤ヒカル",
         "length": "5:07",
