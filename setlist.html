@@ -47,7 +47,7 @@ if (!targetLiveId) {
                     const renderSetlist = setlist => {
                         let setlistHTML = '<ul>';
                         setlist.forEach((song, index) => {
-                            setlistHTML += `<p>${index + 1}. ${song}</p>`;
+                            setlistHTML += `<p>${index + 1}. <a href="https://tokiyui.github.io/Inori/search.html?name=${song}">${song}</p></a>`;
                         });
                         setlistHTML += '</ul>';
                         return setlistHTML;
