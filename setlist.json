@@ -681,6 +681,19 @@
         ]
     },
     {
+        "LIVEtitle": "Bilibili Macro Link - Star Phase 2021",
+        "tourtitle": "",
+        "date": "2021年7月10日",
+        "venue": "オンライン開催",
+        "id": "2021071001",
+        "setlist": [
+            "Starry Wish",
+            "アイマイモコ",
+            "ココロソマリ",
+            "untitled world"
+        ]
+    },
+    {
         "LIVEtitle": "Inori Minase 5th ANNIVERSARY LIVE Starry Wishes",
         "tourtitle": "Inori Minase 5th ANNIVERSARY LIVE Starry Wishes",
         "date": "2020年12月5日",
@@ -706,6 +719,14 @@
             "Catch the Rainbow!",
             "Innocent flower"
         ]
+    },
+    {
+        "LIVEtitle": "オダイバ!! 超次元音楽祭公開収録",
+        "tourtitle": "",
+        "date": "2019年12月26日",
+        "venue": "フジテレビ湾岸スタジオ",
+        "id": "2019122601",
+        "setlist": "Starry Wish"
     },
     {
         "LIVEtitle": "いのりまち町民集会2019 東京夜公演",
@@ -953,6 +974,17 @@
         ]
     },   
     {
+        "LIVEtitle": "アニソン!プレミアム!",
+        "tourtitle": "",
+        "date": "2018年11月25日",
+        "venue": "日本工学院片柳アリーナ",
+        "id": "2018112501",
+        "setlist": [
+            "TRUST IN ETERNITY",
+            "Starry Wish"
+        ]
+    },
+    {
         "LIVEtitle": "ANIMAX MUSIX 2018 YOKOHAMA",
         "tourtitle": "ANIMAX MUSIX",
         "date": "2018年11月17日",
@@ -1129,6 +1161,19 @@
             "MELODY FLAG",
             "Ready Steady Go!",
             "Sweet Melody"
+        ]
+    },
+    {
+        "LIVEtitle": "ANIMAX MUSIX 2018 Guangzhou",
+        "tourtitle": "ANIMAX MUSIX",
+        "date": "2018年4月21日",
+        "venue": "広州体育館（中国・広州）",
+        "id": "2018042101",
+        "setlist": [
+            "夢のつぼみ",
+            "アイマイモコ",
+            "innocent starter",
+            "Starry Wish"
         ]
     },
     {
