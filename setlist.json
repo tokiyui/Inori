@@ -1,5 +1,27 @@
 [
     {
+        "LIVEtitle": "KING SUPER LIVE 2024 day2",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2024年5月12日",
+        "venue": "Kアリーナ横浜",
+        "id": "2024051201",
+        "setlist": [
+            "スクラップアート",
+            "アイオライト"
+        ]
+    },
+    {
+        "LIVEtitle": "KING SUPER LIVE 2024 day1",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2024年5月11日",
+        "venue": "Kアリーナ横浜",
+        "id": "2024051101",
+        "setlist": [
+            "TRUST IN ETERNITY",
+            "Million Futures"
+        ]
+    },
+    {
         "LIVEtitle": "いのりまち町民集会2024 愛知公演",
         "tourtitle": "いのりまち町民集会2024",
         "date": "2024年3月2日",
@@ -746,6 +768,18 @@
         ]
     },
     {
+        "LIVEtitle": "Animelo Summer Live 2019 "-STORY-"",
+        "tourtitle": "Animelo Summer Live",
+        "date": "2019年8月31日",
+        "venue": "さいたまスーパーアリーナ",
+        "id": "2019083101",
+        "setlist": [
+            "Wonder Caravan!",
+            "Ready Steady Go!",
+            "TRUST IN ETERNITY",
+        ]
+    },
+    {
         "LIVEtitle": "Inori Minase LIVE TOUR 2019 Catch the Rainbow! 東京公演2日目・ツアーファイナル",
         "tourtitle": "Inori Minase LIVE TOUR 2019 Catch the Rainbow!",
         "date": "2019年6月29日",
@@ -875,6 +909,20 @@
         ]
     },
     {
+        "LIVEtitle": "リスアニ!LIVE 2019 "SATURDAY STAGE"",
+        "tourtitle": "リスアニ!LIVE 2019",
+        "date": "2019年1月26日",
+        "venue": "日本武道館",
+        "id": "20190012601",
+        "setlist": [
+            "TRUST IN ETERNITY",
+            "ピュアフレーム",
+            "Wonder Caravan!",
+            "Million Futures",
+            "Ready Steady Go!",
+        ]
+    },
+    {
         "LIVEtitle": "いのりまち町民集会2018 夜公演",
         "tourtitle": "いのりまち町民集会2018",
         "date": "2018年12月9日",
@@ -903,7 +951,57 @@
             "Winter Wonder Wander",
             "Happy Birthday"
         ]
-    },    
+    },   
+    {
+        "LIVEtitle": "ANIMAX MUSIX 2018 YOKOHAMA",
+        "tourtitle": "ANIMAX MUSIX",
+        "date": "2018年11月17日",
+        "venue": "横浜アリーナ",
+        "id": "2018111701",
+        "setlist": [
+            "Future Strike",
+            "TRUST IN ETERNITY",
+            "Starry Wish",
+            "Million Futures"
+        ]
+    },
+    {
+        "LIVEtitle": "KING SUPER LIVE 2018 台湾公演",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2018年9月30日",
+        "venue": "国立体育大学体育館（台湾・桃園市）",
+        "id": "2018093001",
+        "setlist": [
+            "Starry Wish",
+            "Million Futures",
+            "アイマイモコ",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "KING SUPER LIVE 2018 東京公演",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2018年9月24日",
+        "venue": "東京ドーム",
+        "id": "2018092401",
+        "setlist": [
+            "Starry Wish",
+            "アイマイモコ",
+            "Ready Steady Go!"
+        ]
+    },
+    {
+        "LIVEtitle": "Animelo Summer Live 2018 "OK!"",
+        "tourtitle": "Animelo Summer Live",
+        "date": "2018年8月25日",
+        "venue": "さいたまスーパーアリーナ",
+        "id": "2018082501",
+        "setlist": [
+            "アイマイモコ",
+            "Million Futures",
+            "Starry Wish"
+        ]
+    },
     {
         "LIVEtitle": "Inori Minase LIVE TOUR 2018 BLUE COMPASS 幕張公演・ツアーファイナル",
         "tourtitle": "Inori Minase LIVE TOUR 2018 BLUE COMPASS",
@@ -1031,6 +1129,22 @@
             "MELODY FLAG",
             "Ready Steady Go!",
             "Sweet Melody"
+        ]
+    },
+    {
+        "LIVEtitle": "リスアニ!LIVE 2018 "FRIDAY STAGE"",
+        "tourtitle": "リスアニ!LIVE",
+        "date": "2018年1月26日",
+        "venue": "日本武道館",
+        "id": "2018012601",
+        "setlist": [
+            "Ready Steady Go!",
+            "MELODY FLAG",
+            "アイマイモコ",
+            "Winter Wonder Wander",
+            "Starry Wish",
+            "星屑のコントレイル",
+            "Innocent Flower"
         ]
     },
     {
