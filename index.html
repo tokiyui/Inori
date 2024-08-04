@@ -39,7 +39,9 @@
         const songTable = document.getElementById('songTable');
 
         songs.forEach(song => {
-            const matchingCDs = CDs.filter(cd => cd.CDtitle === song.CDtitle);
+const matchingCDs = [].concat(song.CDtitle).flatMap(songCDtitle => {
+    return CDs.filter(cd => cd.CDtitle === songCDtitle);
+});
 
             const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
                 const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
