@@ -1253,5 +1253,62 @@
             "夢のつぼみ",
             "crossing field"
         ]
+    },
+    {
+        "LIVEtitle": "ご注文はいのりですか?",
+        "tourtitle": "",
+        "date": "2016年11月20日",
+        "venue": "工学院大学",
+        "id": "2016112001",
+        "setlist": "Starry Wish"
+    },
+    {
+        "LIVEtitle": "@JAM 2016 DAY2 Supported by リスアニ!TV",
+        "tourtitle": "",
+        "date": "2016年5月22日",
+        "venue": "Zeppダイバーシティ東京",
+        "id": "2016052201",
+        "setlist": [
+            "夢のつぼみ",
+            "Dreaming Girls",
+            "Ring of Smile",
+            "harmony ribbon"
+        ]
+    },
+    {
+        "LIVEtitle": "ANISON HISTORY Japan!!",
+        "tourtitle": "",
+        "date": "2016年3月30日",
+        "venue": "NHKホール",
+        "id": "2016033001",
+        "setlist": [
+            "harmony ribbon",
+            "ムーンライト伝説"
+        ]
+    },
+    {
+        "LIVEtitle": "AJ Night 2016",
+        "tourtitle": "",
+        "date": "2016年3月26日",
+        "venue": "ディファ有明",
+        "id": "2016032601",
+        "setlist": [
+            "夢のつぼみ",
+            "殲琴・ダウルダブラ",
+            "harmony ribbon"
+        ]
+    },
+    {
+        "LIVEtitle": "ナゴヤアニソンフェス2016",
+        "tourtitle": "",
+        "date": "2016年2月14日",
+        "venue": "ナガシマスパーランド",
+        "id": "2016021401",
+        "setlist": [
+            "夢のつぼみ",
+            "笑顔が似合う日",
+            "ときめきポポロン♪",
+            "あの日の空へ"
+        ]
     }
 ]
