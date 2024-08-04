@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,13 +42,13 @@
             const matchingCDs = CDs.filter(cd => cd.CDtitle === song.CDtitle);
 
             const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
-                const oldestDate = new Date(oldest.date);
-                const currentDate = new Date(current.date);
+                const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
+                const currentDate = new Date(current.date.replace(/年|月/g, '-').replace(/日/g, ''));
                 return oldestDate < currentDate ? oldest : current;
             }) : { date: 'No release date found' };
 
             const performanceData = setlists.reduce((acc, setlist) => {
-                const date = new Date(setlist.date);
+                const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
                 const addToData = (songsArray) => {
                     if (songsArray.includes(song.title)) {
                         acc.count += 1;
@@ -63,8 +63,8 @@
                 return acc;
             }, { count: 0, latestDate: null });
 
-            const formattedDate = oldestDate.date !== 'No release date found' ? new Date(oldestDate.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) : 'No release date found';
-            const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }) : 'No performance date found';
+            const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
+            const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' }) : 'No performance date found';
 
             const row = `
                 <tr>
