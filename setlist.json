@@ -1177,5 +1177,81 @@
             "Happy Birthday",
             "harmony ribbon"
         ]
+    },
+    {
+        "LIVEtitle": "Animelo Summer Live 2017 -THE CARD-",
+        "tourtitle": "Animelo Summer Live",
+        "date": "2017年8月27日",
+        "venue": "さいたまスーパーアリーナ",
+        "id": "2017082701",
+        "setlist": [
+            "Starry Wish",
+            "アイマイモコ"
+        ]
+    },
+    {
+        "LIVEtitle": "COMCHA FES 2017 in 野音",
+        "tourtitle": "",
+        "date": "2017年5月14日",
+        "venue": "日比谷野外大音楽堂",
+        "id": "2017051401",
+        "setlist": [
+            "春空",
+            "Starry Wish"
+            "Innocent Flower",
+        ]
+    },
+    {
+        "LIVEtitle": "KING SUPER LIVE 2017 TRINITY",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2017年3月5日",
+        "venue": "日本武道館",
+        "id": "2017030501",
+        "setlist": [
+            "夢のつぼみ",
+            "MELODY FLAG"
+            "Starry Wish",
+            "Ring of Smile",
+            "春空"
+            "harmony ribbon"
+        ]
+    },
+    {
+        "LIVEtitle": "ニッポン放送ミュ~コミ+プレゼンツ アニメ紅白歌合戦 Vol.6 代々木ファイナル",
+        "tourtitle": "",
+        "date": "2017年2月5日",
+        "venue": "国立代々木競技場第一体育館",
+        "id": "2017020501",
+        "setlist": [
+            "夢のつぼみ",
+            "Starry Wish",
+            "harmony ribbon"
+        ]
+    },
+    {
+        "LIVEtitle": "リスアニ!LIVE 2017 "SATURDAY STAGE"",
+        "tourtitle": "リスアニ!LIVE",
+        "date": "2017年1月28日",
+        "venue": "日本武道館",
+        "id": "2017012801",
+        "setlist": [
+            "夢のつぼみ",
+            "MELODY FLAG",
+            "Starry Wish",
+            "あの日の空へ",
+            "harmony ribbon"
+        ]
+    },
+    {
+        "LIVEtitle": "ANIMAX MUSIX 2017 OSAKA",
+        "tourtitle": "ANIMAX MUSIX",
+        "date": "2017年1月14日",
+        "venue": "大阪城ホール",
+        "id": "2017011401",
+        "setlist": [
+            "Starry Wish",
+            "夢のつぼみ",
+            "crossing field"
+        ]
     }
 ]
