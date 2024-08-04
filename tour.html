@@ -18,6 +18,9 @@
         padding: 8px;
         text-align: left;
     }
+    th {
+        background-color: #f2f2f2;
+    }
 </style>
 </head>
 <body>
@@ -62,35 +65,31 @@ function displaySetlist() {
             return;
         }
 
-        const tableRows = matchingData.map(item => `
+        const tableHeaders = `
             <tr>
                 <th>LIVE Title</th>
-                <td>${item.LIVEtitle}</td>
-            </tr>
-            <tr>
                 <th>Date</th>
-                <td>${item.date}</td>
-            </tr>
-            <tr>
                 <th>Venue</th>
-                <td>${item.venue}</td>
-            </tr>
-            <tr>
                 <th>Setlist</th>
-                <td>${item.setlist.join('<br>')}</td>
-            </tr>
-            <tr>
                 <th>Encore</th>
-                <td>${item.encore.join('<br>')}</td>
-            </tr>
-            <tr>
                 <th>Wencore</th>
+            </tr>
+        `;
+
+        const tableRows = matchingData.map(item => `
+            <tr>
+                <td>${item.LIVEtitle}</td>
+                <td>${item.date}</td>
+                <td>${item.venue}</td>
+                <td>${item.setlist.join('<br>')}</td>
+                <td>${item.encore.join('<br>')}</td>
                 <td>${item.Wencore}</td>
             </tr>
         `).join('');
 
         const table = `
             <table>
+                ${tableHeaders}
                 ${tableRows}
             </table>
         `;
