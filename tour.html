@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Setlist</title>
+    <title>Concert Setlist Comparison</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,57 +52,47 @@
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
-                const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
-                filteredData.sort((a, b) => a.id.localeCompare(b.id));
+                const concerts = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
+                concerts.sort((a, b) => a.id.localeCompare(b.id));
 
                 const table = document.createElement('table');
+                const headerRow = table.insertRow();
 
-                filteredData.forEach(setlistData => {
-                    const row1 = table.insertRow();
-                    row1.insertCell().textContent = 'Date';
-                    row1.insertCell().textContent = setlistData.date;
+                headerRow.insertCell().textContent = 'Date';
+                headerRow.insertCell().textContent = 'Venue';
 
-                    const row2 = table.insertRow();
-                    row2.insertCell().textContent = 'Venue';
-                    row2.insertCell().textContent = setlistData.venue;
+                concerts.forEach(concert => {
+                    headerRow.insertCell().textContent = concert.LIVEtitle;
+                });
 
-                    setlistData.setlist.forEach(song => {
-                        const row = table.insertRow();
-                        row.insertCell().textContent = 'Setlist';
-                        row.insertCell().textContent = song;
+                const setlistRows = concerts[0].setlist.length;
+
+                for (let i = 0; i < setlistRows; i++) {
+                    const row = table.insertRow();
+                    row.insertCell().textContent = concerts[0].setlist[i];
+                    row.insertCell().textContent = concerts[0].encore && concerts[0].encore[i] ? concerts[0].encore[i] : ' ';
+                    
+                    concerts.forEach(concert => {
+                        row.insertCell().textContent = concert.setlist[i];
                     });
 
-                    table.insertRow();
+                    row.insertCell().textContent = ' ';
+                }
 
-                    const encoreRow = table.insertRow();
-                    encoreRow.insertCell().textContent = 'Encore';
-                    if (setlistData.encore) {
-                        if (Array.isArray(setlistData.encore)) {
-                            setlistData.encore.forEach(encoreSong => {
-                                const row = table.insertRow();
-                                row.insertCell().textContent = 'Encore';
-                                row.insertCell().textContent = encoreSong;
-                            });
-                        } else {
-                            encoreRow.insertCell().textContent = setlistData.encore;
-                        }
-                    }
+                const encoreRow = table.insertRow();
+                encoreRow.insertCell().textContent = 'Encore';
+                encoreRow.insertCell().textContent = '【アンコール】';
 
-                    const wEncoreRow = table.insertRow();
-                    wEncoreRow.insertCell().textContent = 'Wencore';
-                    if (setlistData.Wencore) {
-                        if (Array.isArray(setlistData.Wencore)) {
-                            setlistData.Wencore.forEach(wEncoreSong => {
-                                const row = table.insertRow();
-                                row.insertCell().textContent = 'Wencore';
-                                row.insertCell().textContent = wEncoreSong;
-                            });
-                        } else {
-                            wEncoreRow.insertCell().textContent = setlistData.Wencore;
-                        }
-                    }
+                concerts.forEach(concert => {
+                    encoreRow.insertCell().textContent = concert.encore ? '【アンコール】' : ' ';
+                });
 
-                    table.insertRow();
+                const wEncoreRow = table.insertRow();
+                wEncoreRow.insertCell().textContent = 'Wencore';
+                wEncoreRow.insertCell().textContent = ' ';
+                
+                concerts.forEach(concert => {
+                    wEncoreRow.insertCell().textContent = concert.Wencore ? '【ダブルアンコール】' : ' ';
                 });
 
                 document.getElementById('setlistContainer').appendChild(table);
