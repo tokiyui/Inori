@@ -81,12 +81,18 @@
 
                     row.insertCell().textContent = ' ';
                 }
+                const encoreRows = concerts[0].encore.length;
 
-                const encoreRow = table.insertRow();
-                encoreRow.insertCell().textContent = 'Encore';
-                concerts.forEach(concert => {
-                    encoreRow.insertCell().textContent = concert.encore ? '【アンコール】' : ' ';
-                });
+                for (let i = 0; i < encoreRows; i++) {
+                    const row = table.insertRow();
+                    row.insertCell().textContent = '${i}';
+                    
+                    concerts.forEach(concert => {
+                        row.insertCell().textContent = concert.encore[i];
+                    });
+
+                    row.insertCell().textContent = ' ';
+                }
 
                 const wEncoreRow = table.insertRow();
                 wEncoreRow.insertCell().textContent = 'Wencore';
