@@ -119,6 +119,9 @@
                                 encoreList.forEach(encore => {
                                     const cell = row.insertCell();
                                     cell.textContent = encore[i] || '';
+                                    if (!isSame) {
+                                        row.style.backgroundColor = 'aqua';
+                                    }
                                 });
                             }
                         }
