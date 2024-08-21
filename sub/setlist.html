@@ -24,7 +24,6 @@
             document.getElementById('liveInfo').innerHTML = '<p>No ID provided in the query parameters.</p>';
         } else {
             const jsonFiles = [];
-
             jsonFiles.push("../setlist.json");
 
             let found = false;
@@ -57,25 +56,24 @@
                             const renderEncore = encore => {
                                 if (!encore) {
                                     return '';
+                                } else if (!Array.isArray(encore)) {
+                                    encore = [encore];
                                 }
-                                if (Array.isArray(encore)) {
-                                    let encoreHTML = '<ul>';
-                                    encore.forEach((song, index) => {
-                                        encoreHTML += `<p>【アンコール】</p>${renderEncore(liveData.encore)}`;
-                                    });
-                                    encoreHTML += '</ul>';
-                                    return encoreHTML;
-                                } else {
-                                    return `<p>【アンコール】</p><p><a href="./search.html?name=${encore}">${encore}</a></p>`;
-                                }
+
+                                let encoreHTML = '<ul>';
+                                encore.forEach((song, index) => {
+                                    encoreHTML += `<p>${index + 1}. <a href="./search.html?name=${song}">${song}</a></p>`;
+                                });
+                                encoreHTML += '</ul>';
+                                return encoreHTML;
                             };
 
                             const html = `
                                 <h2>${liveData.LIVEtitle}</h2>
                                 <h3>${liveData.date} (${getDayOfWeek(liveData.date)}) @${liveData.venue}</h3>
                                 ${renderSetlist(liveData.setlist)}
-                                ${liveData.encore ? renderEncore(liveData.encore) : ''}
-                                ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p><a href="./search.html?name=${liveData.Wencore}">${liveData.Wencore}</a></p>` : ''}
+                                ${liveData.encore ? `<p>【アンコール】</p>${renderEncore(liveData.encore)}` : ''}
+                                ${liveData.Wencore ? `<p>【ダブルアンコール】</p><p><ul><a href="./search.html?name=${liveData.Wencore}">${liveData.Wencore}</a></ul></p>` : ''}
                             `;
                             liveInfo.innerHTML = html;
 
