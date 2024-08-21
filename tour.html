@@ -14,21 +14,18 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #f9f9f9;
-        }
-
-        h2 {
-            text-align: center;
+            overflow-x: auto;
         }
 
         table {
-            width: 100%;
             border-collapse: collapse;
+            width: auto;
             margin-top: 10px;
         }
 
@@ -36,6 +33,10 @@
             border: 1px solid #ccc;
             padding: 8px;
             text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
 
         .encore {
@@ -46,10 +47,7 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Inori Minase LIVE TOUR 2023 SCRAP ART</h2>
-        <div id="setlistContainer"></div>
-    </div>
+    <div class="container" id="setlistContainer"></div>
 
     <script>
         fetch('setlist.json')
@@ -57,36 +55,29 @@
             .then(data => {
                 const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
 
+                const table = document.createElement('table');
+                const headerRow = table.insertRow();
+                headerRow.insertCell().textContent = 'Concert';
+                headerRow.insertCell().textContent = 'Date';
+                headerRow.insertCell().textContent = 'Venue';
+                headerRow.insertCell().textContent = 'Setlist';
+                headerRow.insertCell().textContent = 'Encore';
+
                 filteredData.forEach((setlistData, index) => {
-                    const setlistDiv = document.createElement('div');
-                    setlistDiv.innerHTML = `
-                        <h3>Concert ${index + 1}</h3>
-                        <table>
-                            <tr>
-                                <th>Date</th>
-                                <td>${setlistData.date}</td>
-                            </tr>
-                            <tr>
-                                <th>Venue</th>
-                                <td>${setlistData.venue}</td>
-                            </tr>
-                            <tr>
-                                <th>Setlist</th>
-                                <td>${setlistData.setlist.join('<br>')}</td>
-                            </tr>
-                        </table>
-                    `;
+                    const row = table.insertRow();
+                    row.insertCell().textContent = `Concert ${index + 1}`;
+                    row.insertCell().textContent = setlistData.date;
+                    row.insertCell().textContent = setlistData.venue;
+                    row.insertCell().innerHTML = setlistData.setlist.join('<br>');
 
-                    const encoreIndex = setlistData.encore ? setlistData.encore.length : 0;
-                    if (encoreIndex > 0) {
-                        const encoreDiv = document.createElement('div');
-                        encoreDiv.classList.add('encore');
-                        encoreDiv.innerHTML = `【アンコール】<br>${setlistData.encore.join('<br>')}`;
-                        setlistDiv.appendChild(encoreDiv);
+                    const encoreCell = row.insertCell();
+                    if (setlistData.encore && setlistData.encore.length > 0) {
+                        encoreCell.classList.add('encore');
+                        encoreCell.innerHTML = setlistData.encore.join('<br>');
                     }
-
-                    document.getElementById('setlistContainer').appendChild(setlistDiv);
                 });
+
+                document.getElementById('setlistContainer').appendChild(table);
             });
     </script>
 </body>
