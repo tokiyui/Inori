@@ -119,14 +119,14 @@
                             for (let i = 0; i < maxEncoreRows; i++) {
                                 const row = table.insertRow();
                                 const indexCell = row.insertCell();
-                                indexCell.textContent = i + 1;
+                                indexCell.textContent = 'EC' + i + 1;
 
                                 const encoreValues = encoreList.map(encore => encore[i] || '');
                                 const isSameEncore = encoreValues.every((val, idx, arr) => val === arr[0]);
 
                                 encoreValues.forEach((value, idx) => {
                                     const cell = row.insertCell();
-                                    cell.textContent = 'EC' + value;
+                                    cell.textContent = value;
                                     if (!isSameEncore && value !== '') {
                                         row.classList.add('different');
                                     }
