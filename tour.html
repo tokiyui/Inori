@@ -81,8 +81,9 @@
 
                     row.insertCell().textContent = ' ';
                 }
+                
                 const encoreRows = concerts[0].encore.length;
-
+                console.log(concerts[0].encore);
                 for (let i = 0; i < encoreRows; i++) {
                     const row = table.insertRow();
                     row.insertCell().textContent = '${i}';
