@@ -53,6 +53,13 @@
                     venueRow.insertCell().textContent = concert.venue;
                 });
                 
+                const row = table.insertRow();
+                row.insertCell().textContent = '';
+                    
+                concerts.forEach(concert => {
+                    row.insertCell().textContent = '【セットリスト】';
+                });
+                
                 const setlistRows = concerts[0].setlist.length;
 
                 for (let i = 0; i < setlistRows; i++) {
@@ -64,11 +71,11 @@
                     });                    
                 }
 
-                const row = table.insertRow();
-                row.insertCell().textContent = '';
+                const encorerow = table.insertRow();
+                encorerow.insertCell().textContent = '';
                     
                 concerts.forEach(concert => {
-                    row.insertCell().textContent = '【アンコール】';
+                    encorerow.insertCell().textContent = '【アンコール】';
                 });
                 
                 const encoreRows = concerts[0].encore.length;
@@ -83,12 +90,12 @@
                     });
                 }
 
-                const Row = table.insertRow();
-                const cell = Row.insertCell();
+                const wencorerow = table.insertRow();
+                const cell = wencorerow.insertCell();
                 cell.textContent = 'WEC';
                     
                 concerts.forEach(concert => {
-                    row.insertCell().textContent = concert.Wencore;
+                    wencorerow.insertCell().textContent = concert.Wencore;
                 });
 
                 /*
