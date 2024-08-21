@@ -43,8 +43,11 @@
     <script>
         const concertTable = document.getElementById('concertTable');
         const tourSelect = document.getElementById('tourSelect');
+        const setlistContainer = document.getElementById('setlistContainer');
 
         tourSelect.addEventListener('change', () => {
+            setlistContainer.innerHTML = '';
+            concertTable.innerHTML = '';
             const selectedTour = tourSelect.value;
 
             if (selectedTour) {
@@ -53,8 +56,6 @@
                     .then(data => {
                         const concerts = data.filter(item => item.tourtitle === selectedTour);
                         concerts.sort((a, b) => a.id.localeCompare(b.id));
-
-                        concertTable.innerHTML = '';
 
                         const table = document.createElement('table');
 
@@ -131,10 +132,8 @@
                             });
                         }
 
-                        document.getElementById('setlistContainer').appendChild(table);
+                        setlistContainer.appendChild(table);
                     });
-            } else {
-                concertTable.innerHTML = '';
             }
         });
     </script>
