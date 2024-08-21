@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Comparison</title>
+    <title>Concert Setlist</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,6 +39,9 @@
             background-color: #f2f2f2;
         }
 
+        .encore {
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -49,29 +52,59 @@
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
-                const concert1Data = data.find(item => item.concert === 'concert1');
-                const concert2Data = data.find(item => item.concert === 'concert2');
-                
+                const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
+                filteredData.sort((a, b) => a.id.localeCompare(b.id));
+
                 const table = document.createElement('table');
 
-                // Headers
-                const headerRow = table.insertRow();
-                headerRow.insertCell().textContent = 'Concert';
-                headerRow.insertCell().textContent = 'concert1';
-                headerRow.insertCell().textContent = 'concert2';
+                filteredData.forEach(setlistData => {
+                    const row1 = table.insertRow();
+                    row1.insertCell().textContent = setlistData.date;
+                    const cell1 = row1.insertCell();
+                    cell1.colSpan = 2;
+                    cell1.textContent = setlistData.venue;
 
-                // Data Rows
-                const addRow = (label, value1, value2) => {
-                    const row = table.insertRow();
-                    row.insertCell().textContent = label;
-                    row.insertCell().textContent = value1 || '-';
-                    row.insertCell().textContent = value2 || '-';
-                };
+                    setlistData.setlist.forEach(song => {
+                        const row = table.insertRow();
+                        const cell = row.insertCell();
+                        cell.colSpan = 3;
+                        cell.textContent = song;
+                    });
 
-                addRow('Date', concert1Data ? concert1Data.date : '-', concert2Data ? concert2Data.date : '-');
-                addRow('Venue', concert1Data ? concert1Data.venue : '-', concert2Data ? concert2Data.venue : '-');
-                addRow('Setlist', concert1Data ? concert1Data.setlist.join(', ') : '-', concert2Data ? concert2Data.setlist.join(', ') : '-');
-                addRow('Encore', concert1Data && concert1Data.encore ? concert1Data.encore.join(', ') : '-', concert2Data && concert2Data.encore ? concert2Data.encore.join(', ') : '-');
+                    table.insertRow();
+
+                    if (setlistData.encore && setlistData.encore.length > 0) {
+                        const encoreRow = table.insertRow();
+                        const cell = encoreRow.insertCell();
+                        cell.colSpan = 3;
+                        cell.textContent = '【アンコール】';
+                        
+                        setlistData.encore.forEach(encoreSong => {
+                            const row = table.insertRow();
+                            const cell = row.insertCell();
+                            cell.colSpan = 3;
+                            cell.classList.add('encore');
+                            cell.textContent = encoreSong;
+                        });
+                    }
+
+                    if (setlistData.Wencore && setlistData.Wencore.length > 0) {
+                        const wEncoreRow = table.insertRow();
+                        const cell = wEncoreRow.insertCell();
+                        cell.colSpan = 3;
+                        cell.textContent = '【ダブルアンコール】';
+                        
+                        setlistData.Wencore.forEach(wEncoreSong => {
+                            const row = table.insertRow();
+                            const cell = row.insertCell();
+                            cell.colSpan = 3;
+                            cell.classList.add('encore');
+                            cell.textContent = wEncoreSong;
+                        });
+                    }
+
+                    table.insertRow();
+                });
 
                 document.getElementById('setlistContainer').appendChild(table);
             });
