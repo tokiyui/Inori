@@ -94,28 +94,30 @@
                             });
                         }
 
-                        if (concerts[0].encore) {
+                        const encoreList = concerts.map(concert => {
+                            if (Array.isArray(concert.encore)) {
+                                return concert.encore;
+                            } else {
+                                return [concert.encore];
+                            }
+                        });
+
+                        if (encoreList[0][0]) {
                             const encorerow = table.insertRow();
                             encorerow.insertCell().textContent = '';
                             concerts.forEach(concert => {
                                 encorerow.insertCell().textContent = '【アンコール】';
                             });
 
-                            const encoreRows = concerts[0].encore.length;
-                            for (let i = 0; i < encoreRows; i++) {
+                            const maxEncoreRows = Math.max(...encoreList.map(encore => encore.length));
+                            for (let i = 0; i < maxEncoreRows; i++) {
                                 const row = table.insertRow();
                                 const indexCell = row.insertCell();
                                 indexCell.textContent = i + 1;
 
-                                const setlistValues = concerts.map(concert => concert.encore[i]);
-                                const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
-
-                                concerts.forEach(concert => {
+                                encoreList.forEach(encore => {
                                     const cell = row.insertCell();
-                                    cell.textContent = concert.encore[i];
-                                    if (!isSame) {
-                                        row.style.backgroundColor = 'aqua';
-                                    }
+                                    cell.textContent = encore[i] || '';
                                 });
                             }
                         }
