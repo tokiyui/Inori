@@ -63,16 +63,17 @@
                     headerRow.insertCell().textContent = concert.date;
                 });
 
-                headerRow.insertCell().textContent = '会場';
+                const venueRow = table.insertRow();
+                venueRow.insertCell().textContent = '会場';
                 concerts.forEach(concert => {
-                    headerRow.insertCell().textContent = concert.venue;
+                    venueRow.insertCell().textContent = concert.venue;
                 });
                 
                 const setlistRows = concerts[0].setlist.length;
 
                 for (let i = 0; i < setlistRows; i++) {
                     const row = table.insertRow();
-                    row.insertCell().textContent = concerts[0].setlist[i];
+                    row.insertCell().textContent = ${i};
                     
                     concerts.forEach(concert => {
                         row.insertCell().textContent = concert.setlist[i];
@@ -80,12 +81,6 @@
 
                     row.insertCell().textContent = ' ';
                 }
-
-                const venueRow = table.insertRow();
-                venueRow.insertCell().textContent = 'Venue';
-                concerts.forEach(concert => {
-                    venueRow.insertCell().textContent = concert.venue;
-                });
 
                 const encoreRow = table.insertRow();
                 encoreRow.insertCell().textContent = 'Encore';
