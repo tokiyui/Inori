@@ -15,6 +15,10 @@
         .encore {
             font-style: italic;
         }
+
+        .different {
+            background-color: cyan;
+        }
     </style>
 </head>
 
@@ -119,8 +123,9 @@
                                 encoreList.forEach(encore => {
                                     const cell = row.insertCell();
                                     cell.textContent = encore[i] || '';
-                                    if (!isSame) {
-                                        row.style.backgroundColor = 'aqua';
+                                    const isSameEncore = encore.every((val, idx, arr) => val === arr[0]);
+                                    if (!isSameEncore) {
+                                        row.classList.add('different');
                                     }
                                 });
                             }
