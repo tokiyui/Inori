@@ -50,14 +50,24 @@
                 
                 const setlistRows = concerts[0].setlist.length;
 
-                for (let i = 0; i < setlistRows; i++) {
-                    const row = table.insertRow();
-                    row.insertCell().textContent = i+1;
-                    
-                    concerts.forEach(concert => {
-                        row.insertCell().textContent = concert.setlist[i];
-                    });                    
-                }
+for (let i = 0; i < setlistRows; i++) {
+    const row = table.insertRow();
+    const indexCell = row.insertCell();
+    indexCell.textContent = i + 1;
+    
+    const setlistValues = concerts.map(concert => concert.setlist[i]);
+    
+    const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
+    
+    concerts.forEach(concert => {
+        const cell = row.insertCell();
+        cell.textContent = concert.setlist[i];
+        
+        if (!isSame) {
+            row.style.backgroundColor = 'lightblue';
+        }
+    });
+}
 
                 const encorerow = table.insertRow();
                 encorerow.insertCell().textContent = '';
