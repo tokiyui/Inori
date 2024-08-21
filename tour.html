@@ -72,6 +72,7 @@
                 });
                 
                 const encoreRows = concerts[0].encore.length;
+                
                 for (let i = 0; i < encoreRows; i++) {
                     const row = table.insertRow();
                     const cell = row.insertCell();
@@ -80,22 +81,15 @@
                     concerts.forEach(concert => {
                         row.insertCell().textContent = concert.encore[i];
                     });
-
-                    row.insertCell().textContent = ' ';
                 }
 
-                const WencoreRows = concerts[0].Wencore.length;
-                for (let i = 0; i < WencoreRows; i++) {
-                    const row = table.insertRow();
-                    const cell = row.insertCell();
-                    cell.textContent = 'WEC';
+                const row = table.insertRow();
+                const cell = row.insertCell();
+                cell.textContent = 'WEC';
                     
-                    concerts.forEach(concert => {
-                        row.insertCell().textContent = concert.Wencore[i];
-                    });
-
-                    row.insertCell().textContent = ' ';
-                }
+                concerts.forEach(concert => {
+                    row.insertCell().textContent = concert.Wencore;
+                });
 
                 /*
                 const wEncoreRow = table.insertRow();
