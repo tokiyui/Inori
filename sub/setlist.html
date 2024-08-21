@@ -61,7 +61,7 @@
                                 if (Array.isArray(encore)) {
                                     let encoreHTML = '<ul>';
                                     encore.forEach((song, index) => {
-                                        encoreHTML += `<p>${index + 1}. <a href="./search.html?name=${song}">${song}</a></p>`;
+                                        encoreHTML += `<p>【アンコール】</p>${renderEncore(liveData.encore)}`;
                                     });
                                     encoreHTML += '</ul>';
                                     return encoreHTML;
