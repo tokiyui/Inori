@@ -81,7 +81,7 @@
                 }
 
                 const row = table.insertRow();
-                row.insertCell().textContent = 'i+1';
+                row.insertCell().textContent = i+1;
                     
                 concerts.forEach(concert => {
                     row.insertCell().textContent = '【アンコール】';
@@ -90,7 +90,7 @@
                 const encoreRows = concerts[0].encore.length;
                 for (let i = 0; i < encoreRows; i++) {
                     const row = table.insertRow();
-                    row.insertCell().textContent = 'i+1';
+                    row.insertCell().textContent = 'EC' i+1;
                     
                     concerts.forEach(concert => {
                         row.insertCell().textContent = concert.encore[i];
