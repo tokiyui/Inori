@@ -64,7 +64,7 @@
                         cell.textContent = concert.setlist[i];
         
                         if (!isSame) {
-                            row.style.backgroundColor = 'lightblue';
+                            row.style.backgroundColor = 'aqua';
                         }
                     });
                 }
@@ -90,10 +90,10 @@
     
                     concerts.forEach(concert => {
                         const cell = row.insertCell();
-                        cell.textContent = concert.setlist[i];
+                        cell.textContent = concert.encore[i];
         
                         if (!isSame) {
-                            row.style.backgroundColor = 'cyan';
+                            row.style.backgroundColor = 'aqua';
                         }
                     });
                 }
