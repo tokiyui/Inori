@@ -15,6 +15,10 @@
         .encore {
             font-style: italic;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -55,23 +59,23 @@
                         // Clear the table before populating with new data
                         concertTable.innerHTML = '';
 
-                        const table = document.createElement('table');
-                        const headerRow = table.insertRow();
-
-                        headerRow.insertCell().textContent = '開催日';
-                        concerts.forEach(concert => {
-                            headerRow.insertCell().textContent = concert.date;
-                        });
-
-                        const venueRow = table.insertRow();
-                        venueRow.insertCell().textContent = '会場';
-                        concerts.forEach(concert => {
-                            venueRow.insertCell().textContent = concert.venue;
-                        });
-
                         const hasEncore = concerts.every(concert => concert.encore.length > 0);
 
                         if (hasEncore) {
+                            const table = document.createElement('table');
+                            const headerRow = table.insertRow();
+
+                            headerRow.insertCell().textContent = '開催日';
+                            concerts.forEach(concert => {
+                                headerRow.insertCell().textContent = concert.date;
+                            });
+
+                            const venueRow = table.insertRow();
+                            venueRow.insertCell().textContent = '会場';
+                            concerts.forEach(concert => {
+                                venueRow.insertCell().textContent = concert.venue;
+                            });
+
                             const row = table.insertRow();
                             row.insertCell().textContent = '';
 
@@ -135,13 +139,16 @@
                             concerts.forEach(concert => {
                                 wencorerow.insertCell().textContent = concert.Wencore;
                             });
-                        }
 
-                        document.getElementById('setlistContainer').appendChild(table);
+                            document.getElementById('setlistContainer').appendChild(table);
+                        } else {
+                            document.getElementById('setlistContainer').innerHTML = '<p>No encore for this tour.</p>';
+                        }
                     });
             } else {
                 // Clear the table if no tour is selected
                 concertTable.innerHTML = '';
+                document.getElementById('setlistContainer').innerHTML = '';
             }
         });
     </script>
