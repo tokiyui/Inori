@@ -52,74 +52,40 @@
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
-                const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
-                filteredData.sort((a, b) => a.id.localeCompare(b.id));
-
                 const table = document.createElement('table');
+                const headerRow = table.insertRow();
 
-                filteredData.forEach(setlistData => {
-                    const row1 = table.insertRow();
-                    row1.insertCell().textContent = setlistData.date;
-                    const cell1 = row1.insertCell();
-                    cell1.colSpan = 2;
-                    cell1.textContent = setlistData.venue;
+                // Adding headers
+                const headers = ['Concert', 'Date', 'Venue', 'Setlist', 'Encore'];
+                headers.forEach(headerText => {
+                    const headerCell = document.createElement('th');
+                    headerCell.textContent = headerText;
+                    headerRow.appendChild(headerCell);
+                });
 
-                    setlistData.setlist.forEach(song => {
-                        const row = table.insertRow();
-                        const cell = row.insertCell();
-                        cell.colSpan = 3;
-                        cell.textContent = song;
-                    });
+                data.forEach(setlistData => {
+                    const row = table.insertRow();
 
-                    table.insertRow();
+                    const concertCell = row.insertCell();
+                    concertCell.textContent = setlistData.concert;
 
+                    const dateCell = row.insertCell();
+                    dateCell.textContent = setlistData.date;
+
+                    const venueCell = row.insertCell();
+                    venueCell.textContent = setlistData.venue;
+
+                    const setlistCell = row.insertCell();
+                    setlistCell.textContent = setlistData.setlist.join(', ');
+
+                    const encoreCell = row.insertCell();
                     if (setlistData.encore) {
-                        const encoreRow = table.insertRow();
-                        const cell = encoreRow.insertCell();
-                        cell.colSpan = 3;
-                        cell.textContent = '【アンコール】';
-
                         if (Array.isArray(setlistData.encore)) {
-                            setlistData.encore.forEach(encoreSong => {
-                                const row = table.insertRow();
-                                const cell = row.insertCell();
-                                cell.colSpan = 3;
-                                cell.classList.add('encore');
-                                cell.textContent = encoreSong;
-                            });
+                            encoreCell.textContent = setlistData.encore.join(', ');
                         } else {
-                            const row = table.insertRow();
-                            const cell = row.insertCell();
-                            cell.colSpan = 3;
-                            cell.classList.add('encore');
-                            cell.textContent = setlistData.encore;
+                            encoreCell.textContent = setlistData.encore;
                         }
                     }
-
-                    if (setlistData.Wencore) {
-                        const wEncoreRow = table.insertRow();
-                        const cell = wEncoreRow.insertCell();
-                        cell.colSpan = 3;
-                        cell.textContent = '【ダブルアンコール】';
-
-                        if (Array.isArray(setlistData.Wencore)) {
-                            setlistData.Wencore.forEach(wEncoreSong => {
-                                const row = table.insertRow();
-                                const cell = row.insertCell();
-                                cell.colSpan = 3;
-                                cell.classList.add('encore');
-                                cell.textContent = wEncoreSong;
-                            });
-                        } else {
-                            const row = table.insertRow();
-                            const cell = row.insertCell();
-                            cell.colSpan = 3;
-                            cell.classList.add('encore');
-                            cell.textContent = setlistData.Wencore;
-                        }
-                    }
-
-                    table.insertRow();
                 });
 
                 document.getElementById('setlistContainer').appendChild(table);
