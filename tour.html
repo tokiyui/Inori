@@ -126,7 +126,7 @@
 
                                 encoreValues.forEach((value, idx) => {
                                     const cell = row.insertCell();
-                                    cell.textContent = value;
+                                    cell.textContent = 'EC' + value;
                                     if (!isSameEncore && value !== '') {
                                         row.classList.add('different');
                                     }
