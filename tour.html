@@ -48,60 +48,45 @@
 <body>
     <div class="container">
         <h2>Inori Minase LIVE TOUR 2023 SCRAP ART</h2>
-        <table>
-            <tr>
-                <th>Date</th>
-                <td id="date"></td>
-            </tr>
-            <tr>
-                <th>Venue</th>
-                <td id="venue"></td>
-            </tr>
-            <tr>
-                <th>Setlist</th>
-                <td id="setlist"></td>
-            </tr>
-        </table>
+        <div id="setlistContainer"></div>
     </div>
 
     <script>
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
-                const setlistData = data.find(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
-                document.getElementById('date').textContent = setlistData.date;
-                document.getElementById('venue').textContent = setlistData.venue;
+                const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
 
-                const setlistTable = document.getElementById('setlist');
-                setlistData.setlist.forEach(song => {
-                    const row = document.createElement('p');
-                    row.textContent = song;
-                    setlistTable.appendChild(row);
+                filteredData.forEach((setlistData, index) => {
+                    const setlistDiv = document.createElement('div');
+                    setlistDiv.innerHTML = `
+                        <h3>Concert ${index + 1}</h3>
+                        <table>
+                            <tr>
+                                <th>Date</th>
+                                <td>${setlistData.date}</td>
+                            </tr>
+                            <tr>
+                                <th>Venue</th>
+                                <td>${setlistData.venue}</td>
+                            </tr>
+                            <tr>
+                                <th>Setlist</th>
+                                <td>${setlistData.setlist.join('<br>')}</td>
+                            </tr>
+                        </table>
+                    `;
+
+                    const encoreIndex = setlistData.encore ? setlistData.encore.length : 0;
+                    if (encoreIndex > 0) {
+                        const encoreDiv = document.createElement('div');
+                        encoreDiv.classList.add('encore');
+                        encoreDiv.innerHTML = `【アンコール】<br>${setlistData.encore.join('<br>')}`;
+                        setlistDiv.appendChild(encoreDiv);
+                    }
+
+                    document.getElementById('setlistContainer').appendChild(setlistDiv);
                 });
-
-                const encoreDiv = document.createElement('div');
-                encoreDiv.classList.add('encore');
-                encoreDiv.textContent = '【アンコール】';
-                setlistTable.appendChild(encoreDiv);
-
-                setlistData.encore.forEach(encoreSong => {
-                    const encoreRow = document.createElement('p');
-                    encoreRow.textContent = encoreSong;
-                    setlistTable.appendChild(encoreRow);
-                });
-
-                if (setlistData.Wencore) {
-                    const wencoreDiv = document.createElement('div');
-                    wencoreDiv.classList.add('encore');
-                    wencoreDiv.textContent = '【ダブルアンコール】';
-                    setlistTable.appendChild(wencoreDiv);
-
-                    setlistData.Wencore.forEach(wencoreSong => {
-                        const wencoreRow = document.createElement('p');
-                        wencoreRow.textContent = wencoreSong;
-                        setlistTable.appendChild(wencoreRow);
-                    });
-                }
             });
     </script>
 </body>
