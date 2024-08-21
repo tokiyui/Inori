@@ -15,11 +15,8 @@
         .encore {
             font-style: italic;
         }
-
-        .hidden {
-            display: none;
-        }
     </style>
+
 </head>
 
 <body>
@@ -38,17 +35,18 @@
         <option value="いのりまち町民集会2018">いのりまち町民集会2018</option>
     </select>
 
-    <table id="concertTable">
-    </table>
-
-    <div class="container" id="setlistContainer"></div>
+    <div id="setlistContainer"></div>
 
     <script>
-        const concertTable = document.getElementById('concertTable');
+        const concertTable = document.createElement('table');
+        const setlistContainer = document.getElementById('setlistContainer');
+        setlistContainer.appendChild(concertTable);
+
         const tourSelect = document.getElementById('tourSelect');
 
         tourSelect.addEventListener('change', () => {
             const selectedTour = tourSelect.value;
+
             if (selectedTour) {
                 fetch('setlist.json')
                     .then(response => response.json())
@@ -59,51 +57,49 @@
                         // Clear the table before populating with new data
                         concertTable.innerHTML = '';
 
-                        const hasEncore = concerts.every(concert => concert.encore.length > 0);
+                        const table = document.createElement('table');
+                        const headerRow = table.insertRow();
 
-                        if (hasEncore) {
-                            const table = document.createElement('table');
-                            const headerRow = table.insertRow();
+                        headerRow.insertCell().textContent = '開催日';
+                        concerts.forEach(concert => {
+                            headerRow.insertCell().textContent = concert.date;
+                        });
 
-                            headerRow.insertCell().textContent = '開催日';
-                            concerts.forEach(concert => {
-                                headerRow.insertCell().textContent = concert.date;
-                            });
+                        const venueRow = table.insertRow();
+                        venueRow.insertCell().textContent = '会場';
+                        concerts.forEach(concert => {
+                            venueRow.insertCell().textContent = concert.venue;
+                        });
 
-                            const venueRow = table.insertRow();
-                            venueRow.insertCell().textContent = '会場';
-                            concerts.forEach(concert => {
-                                venueRow.insertCell().textContent = concert.venue;
-                            });
+                        const row = table.insertRow();
+                        row.insertCell().textContent = '';
 
+                        concerts.forEach(concert => {
+                            row.insertCell().textContent = '【セットリスト】';
+                        });
+
+                        const setlistRows = concerts[0].setlist.length;
+
+                        for (let i = 0; i < setlistRows; i++) {
                             const row = table.insertRow();
-                            row.insertCell().textContent = '';
+                            const indexCell = row.insertCell();
+                            indexCell.textContent = i + 1;
+
+                            const setlistValues = concerts.map(concert => concert.setlist[i]);
+
+                            const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
 
                             concerts.forEach(concert => {
-                                row.insertCell().textContent = '【セットリスト】';
+                                const cell = row.insertCell();
+                                cell.textContent = concert.setlist[i];
+
+                                if (!isSame) {
+                                    row.style.backgroundColor = 'aqua';
+                                }
                             });
+                        }
 
-                            const setlistRows = concerts[0].setlist.length;
-
-                            for (let i = 0; i < setlistRows; i++) {
-                                const row = table.insertRow();
-                                const indexCell = row.insertCell();
-                                indexCell.textContent = i + 1;
-
-                                const setlistValues = concerts.map(concert => concert.setlist[i]);
-
-                                const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
-
-                                concerts.forEach(concert => {
-                                    const cell = row.insertCell();
-                                    cell.textContent = concert.setlist[i];
-
-                                    if (!isSame) {
-                                        row.style.backgroundColor = 'aqua';
-                                    }
-                                });
-                            }
-
+                        if (concerts[0].encore && concerts[0].encore.length > 0) {
                             const encorerow = table.insertRow();
                             encorerow.insertCell().textContent = '';
 
@@ -131,27 +127,25 @@
                                     }
                                 });
                             }
-
-                            const wencorerow = table.insertRow();
-                            const cell = wencorerow.insertCell();
-                            cell.textContent = 'WEC';
-
-                            concerts.forEach(concert => {
-                                wencorerow.insertCell().textContent = concert.Wencore;
-                            });
-
-                            document.getElementById('setlistContainer').appendChild(table);
-                        } else {
-                            document.getElementById('setlistContainer').innerHTML = '<p>No encore for this tour.</p>';
                         }
+
+                        const wencorerow = table.insertRow();
+                        const cell = wencorerow.insertCell();
+                        cell.textContent = 'WEC';
+
+                        concerts.forEach(concert => {
+                            wencorerow.insertCell().textContent = concert.Wencore;
+                        });
+
+                        concertTable.appendChild(table);
                     });
             } else {
                 // Clear the table if no tour is selected
                 concertTable.innerHTML = '';
-                document.getElementById('setlistContainer').innerHTML = '';
             }
         });
     </script>
+
 </body>
 
 </html>
