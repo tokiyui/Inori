@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inori Minase LIVE TOUR 2023 SCRAP ART</title>
+    <title>Concert Comparison</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,9 +39,6 @@
             background-color: #f2f2f2;
         }
 
-        .encore {
-            font-weight: bold;
-        }
     </style>
 </head>
 
@@ -52,37 +49,29 @@
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
-                const filteredData = data.filter(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
+                const concert1Data = data.find(item => item.concert === 'concert1');
+                const concert2Data = data.find(item => item.concert === 'concert2');
+                
                 const table = document.createElement('table');
 
-                filteredData.forEach((setlistData, index) => {
+                // Headers
+                const headerRow = table.insertRow();
+                headerRow.insertCell().textContent = 'Concert';
+                headerRow.insertCell().textContent = 'concert1';
+                headerRow.insertCell().textContent = 'concert2';
+
+                // Data Rows
+                const addRow = (label, value1, value2) => {
                     const row = table.insertRow();
-                    row.insertCell().textContent = 'Concert';
-                    row.insertCell().textContent = `Concert ${index + 1}`;
+                    row.insertCell().textContent = label;
+                    row.insertCell().textContent = value1 || '-';
+                    row.insertCell().textContent = value2 || '-';
+                };
 
-                    const dateRow = table.insertRow();
-                    dateRow.insertCell().textContent = 'Date';
-                    dateRow.insertCell().textContent = setlistData.date;
-
-                    const venueRow = table.insertRow();
-                    venueRow.insertCell().textContent = 'Venue';
-                    venueRow.insertCell().textContent = setlistData.venue;
-
-                    const setlistRow = table.insertRow();
-                    setlistRow.insertCell().textContent = 'Setlist';
-                    const setlistCell = setlistRow.insertCell();
-                    setlistCell.innerHTML = setlistData.setlist.join('<br>');
-
-                    if (setlistData.encore && setlistData.encore.length > 0) {
-                        const encoreRow = table.insertRow();
-                        encoreRow.insertCell().textContent = 'Encore';
-                        const encoreCell = encoreRow.insertCell();
-                        encoreCell.classList.add('encore');
-                        encoreCell.innerHTML = setlistData.encore.join('<br>');
-                    }
-                    
-                    table.insertRow();
-                });
+                addRow('Date', concert1Data ? concert1Data.date : '-', concert2Data ? concert2Data.date : '-');
+                addRow('Venue', concert1Data ? concert1Data.venue : '-', concert2Data ? concert2Data.venue : '-');
+                addRow('Setlist', concert1Data ? concert1Data.setlist.join(', ') : '-', concert2Data ? concert2Data.setlist.join(', ') : '-');
+                addRow('Encore', concert1Data && concert1Data.encore ? concert1Data.encore.join(', ') : '-', concert2Data && concert2Data.encore ? concert2Data.encore.join(', ') : '-');
 
                 document.getElementById('setlistContainer').appendChild(table);
             });
