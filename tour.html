@@ -65,7 +65,7 @@
                 }
 
                 const row = table.insertRow();
-                row.insertCell().textContent = i+1;
+                row.insertCell().textContent = '';
                     
                 concerts.forEach(concert => {
                     row.insertCell().textContent = '【アンコール】';
@@ -84,11 +84,26 @@
                     row.insertCell().textContent = ' ';
                 }
 
+                const WencoreRows = concerts[0].Wencore.length;
+                for (let i = 0; i < WencoreRows; i++) {
+                    const row = table.insertRow();
+                    const cell = row.insertCell();
+                    cell.textContent = 'WEC';
+                    
+                    concerts.forEach(concert => {
+                        row.insertCell().textContent = concert.Wencore[i];
+                    });
+
+                    row.insertCell().textContent = ' ';
+                }
+
+                /*
                 const wEncoreRow = table.insertRow();
                 wEncoreRow.insertCell().textContent = 'Wencore';
                 concerts.forEach(concert => {
                     wEncoreRow.insertCell().textContent = concert.Wencore ? '【ダブルアンコール】' : ' ';
                 });
+                */
 
                 document.getElementById('setlistContainer').appendChild(table);
             });
