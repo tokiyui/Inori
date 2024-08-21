@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concert Setlist Comparison</title>
-    <style>
-        th,
-        td {
+    <style>       
+        th, td {
             border: 1px solid #ccc;
             text-align: center;
         }
@@ -16,7 +15,6 @@
             font-style: italic;
         }
     </style>
-
 </head>
 
 <body>
@@ -34,19 +32,19 @@
         <option value="いのりまち町民集会2019">いのりまち町民集会2019</option>
         <option value="いのりまち町民集会2018">いのりまち町民集会2018</option>
     </select>
+    
+    <table id="concertTable">
+    </table>
 
-    <div id="setlistContainer"></div>
+<body>
+    <div class="container" id="setlistContainer"></div>
 
     <script>
-        const concertTable = document.createElement('table');
-        const setlistContainer = document.getElementById('setlistContainer');
-        setlistContainer.appendChild(concertTable);
-
+        const concertTable = document.getElementById('concertTable');
         const tourSelect = document.getElementById('tourSelect');
 
         tourSelect.addEventListener('change', () => {
             const selectedTour = tourSelect.value;
-
             if (selectedTour) {
                 fetch('setlist.json')
                     .then(response => response.json())
@@ -70,82 +68,80 @@
                         concerts.forEach(concert => {
                             venueRow.insertCell().textContent = concert.venue;
                         });
-
+                
                         const row = table.insertRow();
                         row.insertCell().textContent = '';
-
+                    
                         concerts.forEach(concert => {
                             row.insertCell().textContent = '【セットリスト】';
                         });
-
+                
                         const setlistRows = concerts[0].setlist.length;
 
                         for (let i = 0; i < setlistRows; i++) {
                             const row = table.insertRow();
                             const indexCell = row.insertCell();
                             indexCell.textContent = i + 1;
-
+            
                             const setlistValues = concerts.map(concert => concert.setlist[i]);
-
+    
                             const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
-
+    
                             concerts.forEach(concert => {
                                 const cell = row.insertCell();
                                 cell.textContent = concert.setlist[i];
-
+        
                                 if (!isSame) {
                                     row.style.backgroundColor = 'aqua';
                                 }
                             });
                         }
 
-                        if (concerts[0].encore && concerts[0].encore.length > 0) {
-                            const encorerow = table.insertRow();
-                            encorerow.insertCell().textContent = '';
+                        const encorerow = table.insertRow();
+                        encorerow.insertCell().textContent = '';
+                    
+                        concerts.forEach(concert => {
+                            encorerow.insertCell().textContent = '【アンコール】';
+                        });
+                
+                        const encoreRows = concerts[0].encore.length;
+                
 
+                        for (let i = 0; i < encoreRows; i++) {
+                            const row = table.insertRow();
+                            const indexCell = row.insertCell();
+                            indexCell.textContent = i + 1;
+    
+                            const setlistValues = concerts.map(concert => concert.encore[i]);
+    
+                            const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
+    
                             concerts.forEach(concert => {
-                                encorerow.insertCell().textContent = '【アンコール】';
+                                const cell = row.insertCell();
+                                cell.textContent = concert.encore[i];
+        
+                                if (!isSame) {
+                                    row.style.backgroundColor = 'aqua';
+                                }
                             });
-
-                            const encoreRows = concerts[0].encore.length;
-
-                            for (let i = 0; i < encoreRows; i++) {
-                                const row = table.insertRow();
-                                const indexCell = row.insertCell();
-                                indexCell.textContent = i + 1;
-
-                                const setlistValues = concerts.map(concert => concert.encore[i]);
-
-                                const isSame = setlistValues.every((val, idx, arr) => val === arr[0]);
-
-                                concerts.forEach(concert => {
-                                    const cell = row.insertCell();
-                                    cell.textContent = concert.encore[i];
-
-                                    if (!isSame) {
-                                        row.style.backgroundColor = 'aqua';
-                                    }
-                                });
-                            }
                         }
 
                         const wencorerow = table.insertRow();
                         const cell = wencorerow.insertCell();
                         cell.textContent = 'WEC';
-
+                    
                         concerts.forEach(concert => {
                             wencorerow.insertCell().textContent = concert.Wencore;
                         });
 
-                        concertTable.appendChild(table);
+                        document.getElementById('setlistContainer').appendChild(table);
                     });
-            } else {
-                // Clear the table if no tour is selected
-                concertTable.innerHTML = '';
-            }
-        });
+                } else {
+                    // Clear the table if no tour is selected
+                    concertTable.innerHTML = '';
+                }
+            });
     </script>
-
 </body>
 
 </html>
