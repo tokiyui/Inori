@@ -79,12 +79,12 @@
                 <tr>
                     <td><a href="./sub/search.html?name=${song.title}">${song.title}</a></td>
                     <td>${performanceData.count}</td>
-                    <td>${latestPerformanceDate}</td>
+                    <td><a href="./sub/setlist.html?id=${performanceData.latestDate}">${latestPerformanceDate}</a></td>
                     <td>${song.lyrics}</td>
                     <td>${song.music}</td>
                     <td>${song.arranger}</td>
                     <td>${song.CDtitle}</td>
-                    <td><a href="./sub/setlist.html?id=${oldestDate}">${formattedDate}</a></td>
+                    <td>${formattedDate}</td>
                 </tr>
             `;
             songTable.innerHTML += row;
