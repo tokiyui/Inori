@@ -83,7 +83,8 @@
                     });
                 }
 
-                const cell = row.insertCell();
+                const Row = table.insertRow();
+                const cell = Row.insertCell();
                 cell.textContent = 'WEC';
                     
                 concerts.forEach(concert => {
@@ -91,7 +92,7 @@
                 });
 
                 /*
-                const wEncoreRow = table.insertRow();
+                
                 wEncoreRow.insertCell().textContent = 'Wencore';
                 concerts.forEach(concert => {
                     wEncoreRow.insertCell().textContent = concert.Wencore ? '【ダブルアンコール】' : ' ';
