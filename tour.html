@@ -1,102 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Setlist Information</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-    }
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inori Minase LIVE TOUR 2023 SCRAP ART</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .encore {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-<label for="tourSelect">Choose a Tour:</label>
-<select id="tourSelect" onchange="displaySetlist()">
-    <option value="">Select a Tour</option>
-    <option value="Inori Minase LIVE TOUR 2018 BLUE COMPASS">Inori Minase LIVE TOUR 2018 BLUE COMPASS</option>
-    <option value="Inori Minase LIVE TOUR 2019 Catch the Rainbow!">Inori Minase LIVE TOUR 2019 Catch the Rainbow!</option>
-    <option value="Inori Minase LIVE TOUR 2021 HELLO HORIZON">Inori Minase LIVE TOUR 2021 HELLO HORIZON</option>
-    <option value="Inori Minase LIVE TOUR 2022 glow">Inori Minase LIVE TOUR 2022 glow</option>
-    <option value="Inori Minase LIVE TOUR 2023 SCRAP ART">Inori Minase LIVE TOUR 2023 SCRAP ART</option>
-</select>
-
-<div id="setlistDetails"></div>
-
-<script>
-function loadJSON(url, callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', url, true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(JSON.parse(xobj.responseText));
-        }
-    };
-    xobj.send(null);
-}
-
-function displaySetlist() {
-    const selectedTour = document.getElementById("tourSelect").value;
-
-    if (selectedTour === "") {
-        document.getElementById("setlistDetails").innerHTML = "";
-        return;
-    }
-
-    loadJSON('setlist.json', function(data) {
-        const matchingData = data.filter(item => item.tourtitle === selectedTour);
-
-        if (matchingData.length === 0) {
-            document.getElementById("setlistDetails").innerHTML = '<p>No setlist information available for this tour.</p>';
-            return;
-        }
-
-        const tableHeaders = `
+    <div class="container">
+        <h2>Inori Minase LIVE TOUR 2023 SCRAP ART</h2>
+        <table>
             <tr>
-                <th>LIVE Title</th>
                 <th>Date</th>
-                <th>Venue</th>
-                <th>Setlist</th>
-                <th>Encore</th>
-                <th>Wencore</th>
+                <td id="date"></td>
             </tr>
-        `;
-
-        const tableRows = matchingData.map(item => `
             <tr>
-                <td>${item.LIVEtitle}</td>
-                <td>${item.date}</td>
-                <td>${item.venue}</td>
-                <td>${item.setlist.join('<br>')}</td>
-                <td>${item.encore.join('<br>')}</td>
-                <td>${item.Wencore}</td>
+                <th>Venue</th>
+                <td id="venue"></td>
             </tr>
-        `).join('');
+            <tr>
+                <th>Setlist</th>
+                <td id="setlist"></td>
+            </tr>
+        </table>
+    </div>
 
-        const table = `
-            <table>
-                ${tableHeaders}
-                ${tableRows}
-            </table>
-        `;
+    <script>
+        fetch('setlist.json')
+            .then(response => response.json())
+            .then(data => {
+                const setlistData = data.find(item => item.tourtitle === 'Inori Minase LIVE TOUR 2023 SCRAP ART');
+                document.getElementById('date').textContent = setlistData.date;
+                document.getElementById('venue').textContent = setlistData.venue;
 
-        document.getElementById("setlistDetails").innerHTML = table;
-    });
-}
-</script>
+                const setlistTable = document.getElementById('setlist');
+                setlistData.setlist.forEach(song => {
+                    const row = document.createElement('p');
+                    row.textContent = song;
+                    setlistTable.appendChild(row);
+                });
+
+                const encoreDiv = document.createElement('div');
+                encoreDiv.classList.add('encore');
+                encoreDiv.textContent = '【アンコール】';
+                setlistTable.appendChild(encoreDiv);
+
+                setlistData.encore.forEach(encoreSong => {
+                    const encoreRow = document.createElement('p');
+                    encoreRow.textContent = encoreSong;
+                    setlistTable.appendChild(encoreRow);
+                });
+
+                if (setlistData.Wencore) {
+                    const wencoreDiv = document.createElement('div');
+                    wencoreDiv.classList.add('encore');
+                    wencoreDiv.textContent = '【ダブルアンコール】';
+                    setlistTable.appendChild(wencoreDiv);
+
+                    setlistData.Wencore.forEach(wencoreSong => {
+                        const wencoreRow = document.createElement('p');
+                        wencoreRow.textContent = wencoreSong;
+                        setlistTable.appendChild(wencoreRow);
+                    });
+                }
+            });
+    </script>
 </body>
+
 </html>
