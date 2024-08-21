@@ -124,6 +124,7 @@
                                     const cell = row.insertCell();
                                     cell.textContent = encore[i] || '';
                                     const isSameEncore = encore.every((val, idx, arr) => val === arr[0]);
+                                    console.log(encore);
                                     if (!isSameEncore) {
                                         row.classList.add('different');
                                     }
