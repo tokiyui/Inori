@@ -74,7 +74,8 @@
                 const encoreRows = concerts[0].encore.length;
                 for (let i = 0; i < encoreRows; i++) {
                     const row = table.insertRow();
-                    row.insertCell().textContent = 'EC' i+1;
+                    const cell = row.insertCell();
+                    cell.textContent = 'EC' + (i + 1);
                     
                     concerts.forEach(concert => {
                         row.insertCell().textContent = concert.encore[i];
