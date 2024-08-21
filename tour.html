@@ -73,34 +73,50 @@
 
                     table.insertRow();
 
-                    if (setlistData.encore && setlistData.encore.length > 0) {
+                    if (setlistData.encore) {
                         const encoreRow = table.insertRow();
                         const cell = encoreRow.insertCell();
                         cell.colSpan = 3;
                         cell.textContent = '【アンコール】';
-                        
-                        setlistData.encore.forEach(encoreSong => {
+
+                        if (Array.isArray(setlistData.encore)) {
+                            setlistData.encore.forEach(encoreSong => {
+                                const row = table.insertRow();
+                                const cell = row.insertCell();
+                                cell.colSpan = 3;
+                                cell.classList.add('encore');
+                                cell.textContent = encoreSong;
+                            });
+                        } else {
                             const row = table.insertRow();
                             const cell = row.insertCell();
                             cell.colSpan = 3;
                             cell.classList.add('encore');
-                            cell.textContent = encoreSong;
-                        });
+                            cell.textContent = setlistData.encore;
+                        }
                     }
 
-                    if (setlistData.Wencore && setlistData.Wencore.length > 0) {
+                    if (setlistData.Wencore) {
                         const wEncoreRow = table.insertRow();
                         const cell = wEncoreRow.insertCell();
                         cell.colSpan = 3;
                         cell.textContent = '【ダブルアンコール】';
-                        
-                        setlistData.Wencore.forEach(wEncoreSong => {
+
+                        if (Array.isArray(setlistData.Wencore)) {
+                            setlistData.Wencore.forEach(wEncoreSong => {
+                                const row = table.insertRow();
+                                const cell = row.insertCell();
+                                cell.colSpan = 3;
+                                cell.classList.add('encore');
+                                cell.textContent = wEncoreSong;
+                            });
+                        } else {
                             const row = table.insertRow();
                             const cell = row.insertCell();
                             cell.colSpan = 3;
                             cell.classList.add('encore');
-                            cell.textContent = wEncoreSong;
-                        });
+                            cell.textContent = setlistData.Wencore;
+                        }
                     }
 
                     table.insertRow();
