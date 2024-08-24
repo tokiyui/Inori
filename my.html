@@ -179,7 +179,7 @@
             searchResults.innerHTML = `
                 <p>未回収楽曲数: ${missingSongs.length}</p>
                 <ul>
-                    ${missingSongs.map(song => `${song}`).join('')}
+                    ${missingSongs.map(song => `${song}<br>`).join('')}
                 </ul>
             `;
         }
