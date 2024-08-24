@@ -32,30 +32,24 @@
 
     <div id="searchResults" class="result"></div>
 
-    <input type="file" id="fileInput">
-    
     <script>
         const checkboxes = document.querySelectorAll('.checkbox');
         const searchResults = document.getElementById('searchResults');
-        const fileInput = document.getElementById('fileInput');
 
-        let songData = [];
-        let setlistData = [];
+        let songData;
+        let setlistData;
 
-        fileInput.addEventListener('change', function() {
-            const file = fileInput.files[0];
-            const reader = new FileReader();
+        fetch('song.json')
+            .then(response => response.json())
+            .then(data => {
+                songData = data;
+            });
 
-            reader.onload = function(e) {
-                if (file.name === 'song.json') {
-                    songData = JSON.parse(e.target.result);
-                } else if (file.name === 'setlist.json') {
-                    setlistData = JSON.parse(e.target.result);
-                }
-            };
-
-            reader.readAsText(file);
-        });
+        fetch('setlist.json')
+            .then(response => response.json())
+            .then(data => {
+                setlistData = data;
+            });
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
