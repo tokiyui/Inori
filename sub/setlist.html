@@ -56,8 +56,8 @@
                             const renderEncore = encore => {
                                 if (!encore) {
                                     return '';
-                                } else if (!Array.isArray(encore)) {
-                                    encore = [encore];
+                                } else {
+                                    encore = Array.isArray(encore) ? encore : [encore];
                                 }
 
                                 let encoreHTML = '<ul>';
