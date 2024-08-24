@@ -32,62 +32,30 @@
 
     <div id="searchResults" class="result"></div>
 
+    <input type="file" id="fileInput">
+    
     <script>
         const checkboxes = document.querySelectorAll('.checkbox');
         const searchResults = document.getElementById('searchResults');
+        const fileInput = document.getElementById('fileInput');
 
-        const songData = [
-            {
-                "title": "夢のつぼみ",
-                "lyrics": "絵伊子",
-                "music": "渡部チェル",
-                "arranger": "渡部チェル",
-                "length": "5:01",
-                "CDtitle": [
-                    "夢のつぼみ",
-                    "Innocent flower"
-                ],
-                "info": ""
-            }
-            // Add more song data as needed
-        ];
+        let songData = [];
+        let setlistData = [];
 
-        const setlistData = [
-            {
-                "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 神奈川公演2日目",
-                "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
-                "date": "2023年10月29日",
-                "venue": "ぴあアリーナMM",
-                "id": "2023102901",
-                "setlist": [
-                    "スクラップアート",
-                    "identity",
-                    "brave climber",
-                    "僕らだけの鼓動",
-                    "クリスタライズ",
-                    "アイマイモコ",
-                    "運命の赤い糸",
-                    "くらりのうた",
-                    "あの日の空へ",
-                    "アイオライト",
-                    "クータスタ",
-                    "TRUST IN ETERNITY",
-                    "約束のアステリズム",
-                    "Million Futures",
-                    "Well Wishing Word",
-                    "While We Walk",
-                    "Winter Wonder Wander",
-                    "僕らは今"
-                ],
-                "encore": [
-                    "Morning Prism",
-                    "ココロはMerry-Go-Round",
-                    "Ready Steady Go!"
-                ],
-                "Wencore": "Catch the Rainbow!"
-            }
-            // Add more setlist data as needed
-        ];
+        fileInput.addEventListener('change', function() {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                if (file.name === 'song.json') {
+                    songData = JSON.parse(e.target.result);
+                } else if (file.name === 'setlist.json') {
+                    setlistData = JSON.parse(e.target.result);
+                }
+            };
+
+            reader.readAsText(file);
+        });
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
