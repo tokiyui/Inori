@@ -20,22 +20,25 @@
 <body>
     <h1>Song Search</h1>
 
-    <label for="2023102901">
-        <input type="checkbox" id="2023102901" class="checkbox"> 2023102901
-    </label>
-    <label for="2023102801">
-        <input type="checkbox" id="2023102801" class="checkbox"> 2023102801
-    </label>
-    <label for="2024020401">
-        <input type="checkbox" id="2024020401" class="checkbox"> 2024020401
-    </label>
+    <br><h3><strong>Inori Minase LIVE TOUR 2023 SCRAP ART</strong></h3>
+    <input type="checkbox" id="2023091701" class="checkbox">兵庫公演
+    <input type="checkbox" id="2023092402" class="checkbox">宮城公演
+    <input type="checkbox" id="2023100801" class="checkbox">愛知公演
+    <input type="checkbox" id="2023101402" class="checkbox">福岡公演
+    <input type="checkbox" id="2023102801" class="checkbox">神奈川公演1日目
+    <input type="checkbox" id="2023102901" class="checkbox">神奈川公演2日目 
+    
+    <br><h3><strong>いのりまち町民集会2024</strong></h3>
+    <input type="checkbox" id="2024020401" class="checkbox">東京昼公演
+    <input type="checkbox" id="2024020402" class="checkbox">東京夜公演
+    <input type="checkbox" id="2024021001" class="checkbox">滋賀公演
+    <input type="checkbox" id="2024030201" class="checkbox">愛知公演    
 
     <div id="searchResults" class="result"></div>
 
     <script>
         const checkboxes = document.querySelectorAll('.checkbox');
         const searchResults = document.getElementById('searchResults');
-
         let songData;
         let setlistData;
 
@@ -43,14 +46,12 @@
             .then(response => response.json())
             .then(data => {
                 songData = data;
-                checkMissingSongs();
             });
 
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
                 setlistData = data;
-                checkMissingSongs();
             });
 
         checkboxes.forEach(checkbox => {
@@ -60,11 +61,16 @@
         });
 
         function checkMissingSongs() {
-            if (!songData || !setlistData) {
+            const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(checkbox => checkbox.id);
+
+            if (checkedIds.length === 0) {
+                searchResults.innerHTML = '';
                 return;
             }
 
-            const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(checkbox => checkbox.id);
+            if (!songData || !setlistData) {
+                return;
+            }
 
             const songTitles = songData.map(song => song.title);
 
