@@ -43,32 +43,60 @@
             .then(response => response.json())
             .then(data => {
                 songData = data;
+                checkMissingSongs();
             });
 
         fetch('setlist.json')
             .then(response => response.json())
             .then(data => {
                 setlistData = data;
+                checkMissingSongs();
             });
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                displayMissingSongs();
+                checkMissingSongs();
             });
         });
 
-        function displayMissingSongs() {
+        function checkMissingSongs() {
+            if (!songData || !setlistData) {
+                return;
+            }
+
             const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(checkbox => checkbox.id);
 
-            const missingSongs = songData.filter(song => {
-                return !setlistData.find(setlist => setlist.id === song.title && checkedIds.includes(setlist.id));
+            const songTitles = songData.map(song => song.title);
+
+            const missingSongs = songTitles.filter(title => {
+                let found = false;
+
+                setlistData.forEach(event => {
+                    if (checkedIds.includes(event.id)) {
+                        if (event.setlist && (event.setlist.includes(title) || (event.setlist.medley && event.setlist.medley.includes(title)))) {
+                            found = true;
+                        }
+                        if (event.encore && event.encore.includes(title)) {
+                            found = true;
+                        }
+                        if (event.Wencore && event.Wencore === title) {
+                            found = true;
+                        }
+                    }
+                });
+
+                return !found;
             });
 
+            displayResults(missingSongs);
+        }
+
+        function displayResults(missingSongs) {
             searchResults.innerHTML = `
                 <h2>Missing Songs</h2>
                 <p>Number of missing songs: ${missingSongs.length}</p>
                 <ul>
-                    ${missingSongs.map(song => `<li>${song.title}</li>`).join('')}
+                    ${missingSongs.map(song => `<li>${song}</li>`).join('')}
                 </ul>
             `;
         }
