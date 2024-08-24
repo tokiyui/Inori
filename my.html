@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+
+        .result {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Song Search</h1>
+
+    <label for="2023102901">
+        <input type="checkbox" id="2023102901" class="checkbox"> 2023102901
+    </label>
+    <label for="2023102801">
+        <input type="checkbox" id="2023102801" class="checkbox"> 2023102801
+    </label>
+    <label for="2024020401">
+        <input type="checkbox" id="2024020401" class="checkbox"> 2024020401
+    </label>
+
+    <div id="searchResults" class="result"></div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.checkbox');
+        const searchResults = document.getElementById('searchResults');
+
+        const songData = [
+            {
+                "title": "夢のつぼみ",
+                "lyrics": "絵伊子",
+                "music": "渡部チェル",
+                "arranger": "渡部チェル",
+                "length": "5:01",
+                "CDtitle": [
+                    "夢のつぼみ",
+                    "Innocent flower"
+                ],
+                "info": ""
+            }
+            // Add more song data as needed
+        ];
+
+        const setlistData = [
+            {
+                "LIVEtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART 神奈川公演2日目",
+                "tourtitle": "Inori Minase LIVE TOUR 2023 SCRAP ART",
+                "date": "2023年10月29日",
+                "venue": "ぴあアリーナMM",
+                "id": "2023102901",
+                "setlist": [
+                    "スクラップアート",
+                    "identity",
+                    "brave climber",
+                    "僕らだけの鼓動",
+                    "クリスタライズ",
+                    "アイマイモコ",
+                    "運命の赤い糸",
+                    "くらりのうた",
+                    "あの日の空へ",
+                    "アイオライト",
+                    "クータスタ",
+                    "TRUST IN ETERNITY",
+                    "約束のアステリズム",
+                    "Million Futures",
+                    "Well Wishing Word",
+                    "While We Walk",
+                    "Winter Wonder Wander",
+                    "僕らは今"
+                ],
+                "encore": [
+                    "Morning Prism",
+                    "ココロはMerry-Go-Round",
+                    "Ready Steady Go!"
+                ],
+                "Wencore": "Catch the Rainbow!"
+            }
+            // Add more setlist data as needed
+        ];
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                displayMissingSongs();
+            });
+        });
+
+        function displayMissingSongs() {
+            const checkedIds = Array.from(document.querySelectorAll('.checkbox:checked')).map(checkbox => checkbox.id);
+
+            const missingSongs = songData.filter(song => {
+                return !setlistData.find(setlist => setlist.id === song.title && checkedIds.includes(setlist.id));
+            });
+
+            searchResults.innerHTML = `
+                <h2>Missing Songs</h2>
+                <p>Number of missing songs: ${missingSongs.length}</p>
+                <ul>
+                    ${missingSongs.map(song => `<li>${song.title}</li>`).join('')}
+                </ul>
+            `;
+        }
+    </script>
+</body>
+
+</html>
