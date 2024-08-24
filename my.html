@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Search</title>
+    <title>未回収楽曲チェックツール</title>
     <style>
         h3 {
             display: inline;
@@ -177,10 +177,9 @@
 
         function displayResults(missingSongs) {
             searchResults.innerHTML = `
-                <h2>Missing Songs</h2>
-                <p>Number of missing songs: ${missingSongs.length}</p>
+                <p>未回収楽曲数: ${missingSongs.length}</p>
                 <ul>
-                    ${missingSongs.map(song => `<li>${song}</li>`).join('')}
+                    ${missingSongs.map(song => `${song}`).join('')}
                 </ul>
             `;
         }
