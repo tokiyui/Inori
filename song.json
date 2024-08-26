@@ -768,7 +768,10 @@
         "music": "志村真白",
         "arranger": "EFFY",
         "length": "3:45",
-        "CDtitle": "アイオライト",
+        "CDtitle": [
+            "アイオライト",
+            "heart bookmark"
+        ],
         "utanet": "336204",
         "info": ""
     },
@@ -798,7 +801,10 @@
         "music": "栁舘周平",
         "arranger": "栁舘周平",
         "length": "3:33",
-        "CDtitle": "スクラップアート",
+        "CDtitle": [
+            "スクラップアート",
+            "heart bookmark"
+        ],
         "utanet": "343249",
         "info": ""
     },
@@ -821,5 +827,55 @@
         "CDtitle": "スクラップアート",
         "utanet": "343412",
         "info": ""
-    }
+    },
+    {
+        "title": "heart bookmark",
+        "lyrics": "岩里祐穂",
+        "music": "武田将弥",
+        "arranger": "白戸佑輔",
+        "length": "4:08",
+        "CDtitle": "heart bookmark",
+        "utanet": "",
+        "info": ""
+    },
+    {
+        "title": "フラーグム",
+        "lyrics": "カノエラナ",
+        "music": "白戸佑輔",
+        "arranger": "白戸佑輔",
+        "length": "4:06",
+        "CDtitle": "heart bookmark",
+        "utanet": "",
+        "info": ""
+    },
+    {
+        "title": "ほしとね、",
+        "lyrics": "櫻澤ヒカル",
+        "music": "櫻澤ヒカル",
+        "arranger": "櫻澤ヒカル",
+        "length": "3:31",
+        "CDtitle": "heart bookmark",
+        "utanet": "",
+        "info": ""
+    },
+    {
+        "title": "グラデーション",
+        "lyrics": "やぎぬまかな",
+        "music": "近藤世真(Elements Garden)",
+        "arranger": "近藤世真(Elements Garden)",
+        "length": "4:26",
+        "CDtitle": "heart bookmark",
+        "utanet": "",
+        "info": ""
+    },
+    {
+        "title": "燈籠光柱",
+        "lyrics": "栁舘周平",
+        "music": "栁舘周平",
+        "arranger": "栁舘周平",
+        "length": "4:17",
+        "CDtitle": "heart bookmark",
+        "utanet": "",
+        "info": ""
+    },
 ]
