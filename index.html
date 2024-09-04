@@ -60,33 +60,37 @@ function updateSongDetails(songs, CDs, setlists) {
             return oldestDate < currentDate ? oldest : current;
         }) : { date: 'No release date found' };
         
-        const performanceData = setlists.reduce((acc, setlist) => {
-            const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
-            
-            const songsArray = Array.isArray(setlist.setlist) ? setlist.setlist : [setlist.setlist];
-            if (Array.isArray(setlist.encore)) songsArray.push(...setlist.encore); // Modified line
-            
-            if (setlist.Wencore) songsArray.push(setlist.Wencore);
-            
-            const titles = songsArray.reduce((acc, title) => {
-                if (typeof title === 'object' && 'medley' in title) {
-                    acc.push(...title.medley);
-                } else {
-                    acc.push(title);
-                }
-                return acc;
-            }, []);
-            
-            if (titles.includes(song.title)) {
-                acc.count += 1;
-                if (!acc.latestDate || date > acc.latestDate) {
-                    acc.latestDate = date;
-                    acc.id = setlist.id;
-                }
-            }
-            
-            return acc;
-        }, { count: 0, latestDate: null, id: null });
+const performanceData = setlists.reduce((acc, setlist) => {
+    const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
+    
+    const songsArray = Array.isArray(setlist.setlist) ? setlist.setlist : [setlist.setlist];
+    if (!Array.isArray(setlist.encore)) {
+        songsArray.push(setlist.encore); // If encore is not an array, treat it as a single element array
+    } else {
+        songsArray.push(...setlist.encore);
+    }
+    
+    if (setlist.Wencore) songsArray.push(setlist.Wencore);
+    
+    const titles = songsArray.reduce((acc, title) => {
+        if (typeof title === 'object' && 'medley' in title) {
+            acc.push(...title.medley);
+        } else {
+            acc.push(title);
+        }
+        return acc;
+    }, []);
+
+    if (titles.includes(song.title)) {
+        acc.count += 1;
+        if (!acc.latestDate || date > acc.latestDate) {
+            acc.latestDate = date;
+            acc.id = setlist.id;
+        }
+    }
+
+    return acc;
+}, { count: 0, latestDate: null, id: null });
         
         const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
         const latestPerformanceDate = performanceData.latestDate ? formatDateToJapanese(performanceData.latestDate) : '未披露';
