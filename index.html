@@ -46,6 +46,8 @@
         return `${year}年${month}月${day}日`;
     }
 
+javascript
+
 function updateSongDetails(songs, CDs, setlists) {
     const songTable = document.getElementById('songTable');
     
@@ -64,7 +66,7 @@ function updateSongDetails(songs, CDs, setlists) {
             const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
             
             const songsArray = Array.isArray(setlist.setlist) ? setlist.setlist : [setlist.setlist];
-            if (!Array.isArray(setlist.encore)) songsArray.push(setlist.encore);
+            if (Array.isArray(setlist.encore)) songsArray.push(...setlist.encore); // Modified line
             
             if (setlist.Wencore) songsArray.push(setlist.Wencore);
             
