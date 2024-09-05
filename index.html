@@ -96,6 +96,8 @@ const performanceData = setlists.reduce((acc, setlist) => {
         const latestPerformanceDate = performanceData.latestDate ? formatDateToJapanese(performanceData.latestDate) : '未披露';
         const lyricsClass = song.lyrics.includes('水瀬いのり') ? 'cyan-cell' : '';
         const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
+
+        console.log(song);
  
         const row = `
         <tr>
