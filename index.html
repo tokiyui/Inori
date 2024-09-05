@@ -102,7 +102,7 @@ const cdLinks = Array.isArray(song.CDtitle)
         const matchedCD = matchingCDs.find(cd => cd.CDtitle === cdTitle);
         return matchedCD ? `<a href="https://www.inoriminase.com/discography/?id=${matchedCD.discoid}">${cdTitle}</a>` : cdTitle;
     })
-    : [song.CDtitle];
+    : matchingCDs.map(cd => `<a href="https://www.inoriminase.com/discography/?id=${cd.discoid}">${cd.CDtitle}</a>`);
 
 const formattedCDs = cdLinks.join(', ');
 
