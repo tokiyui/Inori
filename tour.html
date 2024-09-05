@@ -65,9 +65,15 @@
                         const table = document.createElement('table');
 
                         const headerRow = table.insertRow();
-                        headerRow.insertCell().textContent = '開催日';
+                        headerRow.insertCell().textContent = '';
                         concerts.forEach(concert => {
-                            headerRow.insertCell().textContent = concert.date;
+                            headerRow.insertCell().textContent = concert.LIVEtitle;
+                        });
+                        
+                        const dateRow = table.insertRow();
+                        dateRow.insertCell().textContent = '開催日';
+                        concerts.forEach(concert => {
+                            dateRow.insertCell().textContent = concert.date;
                         });
 
                         const venueRow = table.insertRow();
