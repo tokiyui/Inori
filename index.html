@@ -97,19 +97,14 @@ const performanceData = setlists.reduce((acc, setlist) => {
         const lyricsClass = song.lyrics.includes('水瀬いのり') ? 'cyan-cell' : '';
         const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
  
-const cdLinks = matchingCDs.map(cd => {
-    if (Array.isArray(song.CDtitle)) {
-        return song.CDtitle.map(cdTitle => {
-            const matchedCD = cd.CDtitle === cdTitle ? cd : null;
-            return matchedCD ? `<a href="https://www.inoriminase.com/discography/?id=${matchedCD.discoid}">${cdTitle}</a>` : cdTitle;
-        }).join(', ');
-    } else {
-        const matchedCD = cd.CDtitle === song.CDtitle ? cd : null;
-        return matchedCD ? `<a href="https://www.inoriminase.com/discography/?id=${matchedCD.discoid}">${song.CDtitle}</a>` : song.CDtitle;
-    }
-});
+const cdLinks = Array.isArray(song.CDtitle)
+    ? song.CDtitle.map(cdTitle => {
+        const matchedCD = matchingCDs.find(cd => cd.CDtitle === cdTitle);
+        return matchedCD ? `<a href="https://www.inoriminase.com/discography/?id=${matchedCD.discoid}">${cdTitle}</a>` : cdTitle;
+    })
+    : [song.CDtitle];
 
-const formattedCDs = Array.isArray(song.CDtitle) ? cdLinks.join('<br>') : cdLinks;
+const formattedCDs = cdLinks.join(', ');
 
 const row = `
 <tr>
