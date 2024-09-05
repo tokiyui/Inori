@@ -50,16 +50,19 @@ function updateSongDetails(songs, CDs, setlists) {
     const songTable = document.getElementById('songTable');
     
     songs.forEach(song => {
-        const matchingCDs = [].concat(song.CDtitle).flatMap(songCDtitle => {
-        return CDs.filter(cd => cd.CDtitle === songCDtitle);
+    const songCDtitles = Array.isArray(song.CDtitle) ? song.CDtitle : [song.CDtitle];
+    
+    const matchingCDs = songCDtitles.flatMap(songCDtitle => {
+        return CDs.filter(cd => songCDtitle.includes(cd.CDtitle));
     });
 
     matchingCDs.forEach(cd => {
-        const correspondingCD = CDs.find(item => item.CDtitle === cd.CDtitle);
+        const correspondingCD = CDs.find(item => songCDtitles.includes(item.CDtitle));
         if (correspondingCD) {
-            song.discoid = correspondingCD.discoid;
+            cd.discoid = correspondingCD.discoid;
         }
     });
+
         
         const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
             const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
@@ -115,7 +118,7 @@ const performanceData = setlists.reduce((acc, setlist) => {
             <td class="${musicClass}">${song.music}</td>
             <td>${song.arranger}</td>
             <td>${song.length}</td>
-            <td><a href="./sub/setlist.html?id=${song.discoid}">${song.CDtitle}</a></td>
+            <td><a href=https://www.inoriminase.com/discography/?id=${song.discoid}">${song.CDtitle}</a></td>
             <td>${formattedDate}</td>
         </tr>
         `;
