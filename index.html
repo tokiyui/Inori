@@ -132,9 +132,9 @@ const performanceData = setlists.reduce((acc, setlist) => {
 }
     
 Promise.all([
-    fetch('path/to/song.json').then(response => response.json()),
-    fetch('path/to/CD.json').then(response => response.json()),
-    fetch('path/to/setlist.json').then(response => response.json())
+    fetch('song.json').then(response => response.json()),
+    fetch('CD.json').then(response => response.json()),
+    fetch('setlist.json').then(response => response.json())
 ]).then(([songs, CDs, setlists]) => {
     const songCountMap = {}; // 曲ごとのカウントを管理するオブジェクト
 
