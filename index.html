@@ -20,145 +20,41 @@
 </style>
 </head>
 <body>
-<h2>水瀬いのり楽曲一覧 <a href="tour.html">ツアーセットリスト比較ページ</a> <a href="my.html">未回収楽曲チェックツール</a></h2>
-    <table>
-        <thead>
-            <tr>
-                <th>楽曲名(クリックすると歌詞が開きます)</th>
-                <th>披露回数</th>
-                <th>最終披露日</th>
-                <th>作詞</th>
-                <th>作曲</th>
-                <th>編曲</th>
-                <th>長さ</th>
-                <th>収録CD</th>
-                <th>リリース日</th>
-            </tr>
-        </thead>
-        <tbody id="songTable"></tbody>
-    </table>
+<h2>水瀬いのり楽曲一覧</h2>
+<table>
+    <thead>
+        <tr>
+            <th>楽曲名</th>
+            <th>披露回数</th>
+            <th>最終披露日</th>
+        </tr>
+    </thead>
+    <tbody id="songTable"></tbody>
+</table>
 
 <script>
-    function formatDateToJapanese(date) {
-        const year = date.getFullYear();
-        const month = (date.getMonth() + 1).toString();
-        const day = date.getDate().toString();
-        return `${year}年${month}月${day}日`;
-    }
-
-function updateSongDetails(songs, CDs, setlists) {
+function updateSongDetails(songs) {
     const songTable = document.getElementById('songTable');
-    
+
     songs.forEach(song => {
-    const songCDtitles = Array.isArray(song.CDtitle) ? song.CDtitle : [song.CDtitle];
-    
-    const matchingCDs = songCDtitles.flatMap(songCDtitle => {
-        return CDs.filter(cd => songCDtitle.includes(cd.CDtitle));
-    });
-
-    matchingCDs.forEach(cd => {
-        const correspondingCD = CDs.find(item => songCDtitles.includes(item.CDtitle));
-        if (correspondingCD) {
-            song.discoid = correspondingCD.discoid;
-        }
-    });
-
-        
-        const oldestDate = matchingCDs.length > 0 ? matchingCDs.reduce((oldest, current) => {
-            const oldestDate = new Date(oldest.date.replace(/年|月/g, '-').replace(/日/g, ''));
-            const currentDate = new Date(current.date.replace(/年|月/g, '-').replace(/日/g, ''));
-            return oldestDate < currentDate ? oldest : current;
-        }) : { date: 'No release date found' };
-        
-const performanceData = setlists.reduce((acc, setlist) => {
-    const date = new Date(setlist.date.replace(/年|月/g, '-').replace(/日/g, ''));
-    
-    const songsArray = Array.isArray(setlist.setlist) ? setlist.setlist : [setlist.setlist];
-    if (!Array.isArray(setlist.encore)) {
-        songsArray.push(setlist.encore); // If encore is not an array, treat it as a single element array
-    } else {
-        songsArray.push(...setlist.encore);
-    }
-    
-    if (setlist.Wencore) songsArray.push(setlist.Wencore);
-    
-    const titles = songsArray.reduce((acc, title) => {
-        if (typeof title === 'object' && 'medley' in title) {
-            acc.push(...title.medley);
-        } else {
-            acc.push(title);
-        }
-        return acc;
-    }, []);
-
-    if (titles.includes(song.title)) {
-        acc.count += 1;
-        if (!acc.latestDate || date > acc.latestDate) {
-            acc.latestDate = date;
-            acc.id = setlist.id;
-        }
-    }
-
-    return acc;
-}, { count: 0, latestDate: null, id: null });
-        
-        const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
-        const latestPerformanceDate = performanceData.latestDate ? formatDateToJapanese(performanceData.latestDate) : '未披露';
-        const lyricsClass = song.lyrics.includes('水瀬いのり') ? 'cyan-cell' : '';
-        const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
-
-        console.log(song);
-
-        const cdLinks = song.discoid.map((discoid, index) => `
-            <a href="https://www.inoriminase.com/discography/?id=${discoid}">${songCDtitles[index]}</a>
-        `).join(', ');
-
         const row = `
         <tr>
-            <td><a href="https://www.uta-net.com/song/${song.utanet}">${song.title}</a></td>
-            <td><a href="./sub/search.html?name=${song.title}">${performanceData.count}</a></td>
-            <td><a href="./sub/setlist.html?id=${performanceData.id}">${latestPerformanceDate}</a></td>
-            <td class="${lyricsClass}">${song.lyrics}</td>
-            <td class="${musicClass}">${song.music}</td>
-            <td>${song.arranger}</td>
-            <td>${song.length}</td>
-            <td>${cdLinks}</td>
-            <td>${formattedDate}</td>
+            <td>${song.title}</td>
+            <td>${song.performanceCount}</td>
+            <td>${song.lastPerformanceDate}</td>
         </tr>
         `;
 
         songTable.innerHTML += row;
     });
 }
-    
-Promise.all([
-    fetch('song.json').then(response => response.json()),
-    fetch('CD.json').then(response => response.json()),
-    fetch('setlist.json').then(response => response.json())
-]).then(([songs, CDs, setlists]) => {
-    const songCountMap = {}; // 曲ごとのカウントを管理するオブジェクト
 
-    // 曲ごとにカウントを管理
-    const countSong = song => {
-        const key = song.title + (song.artist || ''); // 曲の一意の識別子を作成
-        if (!songCountMap[key]) {
-            songCountMap[key] = 1; // 曲がまだカウントされていない場合はカウント
-            return true;
-        }
-        return false; // 既にカウントされている場合はスキップ
-    };
-
-    // メドレー内の曲を1回だけカウント
-    const filteredSongs = songs.filter(song => {
-        if (Array.isArray(song.medley)) {
-            return song.medley.some(medleySong => countSong(medleySong));
-        } else {
-            return countSong(song);
-        }
-    });
-
-    updateSongDetails(filteredSongs, CDs, setlists);
-}).catch(error => console.error('Failed to fetch data:', error));
+fetch('path/to/songs.json')
+    .then(response => response.json())
+    .then(songs => {
+        updateSongDetails(songs);
+    })
+    .catch(error => console.error('Failed to fetch data:', error));
 </script>
 </body>
 </html>
