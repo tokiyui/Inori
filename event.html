@@ -62,24 +62,37 @@
 </table>
 
 <script>
-    fetch('event.json')
-    .then(response => response.json())
-    .then(data => {
-        const eventTable = document.getElementById('eventTable');
-        const tbody = eventTable.createTBody();
+    const eventData = {
+        "Year": "2024",
+        "Month": "11",
+        "Day": "30",
+        "Weekday": "土",
+        "Start Time": "17:00",
+        "class1": "",
+        "class2": "",
+        "class3": "",
+        "title": "声優グランプリ30周年記念「声グラFES.」DAY1",
+        "title2": "",
+        "prefecture": "",
+        "Venue": "幕張メッセ イベントホール",
+        "with": "",
+        "info": "",
+        "id": ""
+    };
 
-        for (const key in data) {
-            if (data[key] !== "") {
-                const row = tbody.insertRow();
-                const cell1 = row.insertCell(0);
-                const cell2 = row.insertCell(1);
-                cell1.textContent = key;
-                cell2.textContent = data[key];
-                cell2.setAttribute('data-label', key);
-            }
+    const eventTable = document.getElementById('eventTable');
+    const tbody = eventTable.createTBody();
+
+    for (const key in eventData) {
+        if (eventData[key] !== "") {
+            const row = tbody.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            cell1.textContent = key;
+            cell2.textContent = eventData[key];
+            cell2.setAttribute('data-label', key);
         }
-    })
-    .catch(error => console.error('Error fetching event data: ', error));
+    }
 </script>
 
 </body>
