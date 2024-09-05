@@ -55,9 +55,9 @@ function updateSongDetails(songs, CDs, setlists) {
     });
 
     matchingCDs.forEach(cd => {
-        const correspondingCD = CDs.find(item => item.CDtitle === cd.CDtitle);
+        const correspondingCD = CDs.find(item => song.CDtitle === cd.CDtitle);
         if (correspondingCD) {
-            cd.discoid = correspondingCD.discoid;
+            song.discoid = correspondingCD.discoid;
         }
     });
         
