@@ -107,7 +107,7 @@ const cdLinks = Array.isArray(song.CDtitle)
 
 const formattedCDs = cdLinks.join(', ');
 
-const videoLink = song.video ? `<a href="https://www.youtube.com/watch?v=${song.video}" target="_blank">ライブ映像</a>` : '';
+const videoLink = song.videolink ? `<a href="https://www.youtube.com/watch?v=${song.videolink}" target="_blank">ライブ映像</a>` : '';
 
 const row = `
 <tr>
