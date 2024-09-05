@@ -106,7 +106,7 @@ const performanceData = setlists.reduce((acc, setlist) => {
             <td class="${musicClass}">${song.music}</td>
             <td>${song.arranger}</td>
             <td>${song.length}</td>
-            <td>${song.CDtitle}</td>
+            <td><a href="./sub/setlist.html?id=${song.discoid}">${song.CDtitle}</a></td>
             <td>${formattedDate}</td>
         </tr>
         `;
