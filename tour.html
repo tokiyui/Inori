@@ -67,7 +67,7 @@
                         const headerRow = table.insertRow();
                         headerRow.insertCell().textContent = '';
                         concerts.forEach(concert => {
-                            headerRow.insertCell().textContent = concert.LIVEtitle;
+                            headerRow.insertCell().textContent = concert.LIVEtitle.replace(concert.tourtitle, '');
                         });
                         
                         const dateRow = table.insertRow();
