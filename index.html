@@ -108,7 +108,11 @@ const performanceData = setlists.reduce((acc, setlist) => {
         const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
 
         console.log(song);
- 
+
+        const cdLinks = song.discoid.map((discoid, index) => `
+            <a href="https://www.inoriminase.com/discography/?id=${discoid}">${songCDtitles[index]}</a>
+        `).join(', ');
+
         const row = `
         <tr>
             <td><a href="https://www.uta-net.com/song/${song.utanet}">${song.title}</a></td>
@@ -118,7 +122,7 @@ const performanceData = setlists.reduce((acc, setlist) => {
             <td class="${musicClass}">${song.music}</td>
             <td>${song.arranger}</td>
             <td>${song.length}</td>
-            <td><a href="https://www.inoriminase.com/discography/?id=${song.discoid}">${song.CDtitle}</a></td>
+            <td>${cdLinks}</td>
             <td>${formattedDate}</td>
         </tr>
         `;
@@ -128,9 +132,9 @@ const performanceData = setlists.reduce((acc, setlist) => {
 }
     
 Promise.all([
-    fetch('song.json').then(response => response.json()),
-    fetch('CD.json').then(response => response.json()),
-    fetch('setlist.json').then(response => response.json())
+    fetch('path/to/song.json').then(response => response.json()),
+    fetch('path/to/CD.json').then(response => response.json()),
+    fetch('path/to/setlist.json').then(response => response.json())
 ]).then(([songs, CDs, setlists]) => {
     const songCountMap = {}; // 曲ごとのカウントを管理するオブジェクト
 
