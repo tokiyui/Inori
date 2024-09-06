@@ -55,11 +55,11 @@
                 const eventTable = document.getElementById('eventTable');
                 const row = eventTable.insertRow();
 
-                const fields = ['Year', 'Month', 'Day', 'Weekday', 'Start Time', 'class1', 'class2', 'class3', 'title', 'title2', 'prefecture', 'Venue', 'with', 'info', 'id'];
+                const keys = ['Year', 'Month', 'Day', 'Weekday', 'Start Time', 'class1', 'class2', 'class3', 'title', 'title2', 'prefecture', 'Venue', 'with', 'info', 'id'];
 
-                fields.forEach(field => {
+                keys.forEach(key => {
                     const cell = row.insertCell();
-                    cell.textContent = data[field];
+                    cell.textContent = data[key];
                 });
             })
             .catch(error => console.error('Error fetching event data: ', error));
