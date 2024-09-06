@@ -26,45 +26,30 @@
 <table>
     <tr>
         <th>Year</th>
-        <td id="year"></td>
-    </tr>
-    <tr>
         <th>Month</th>
-        <td id="month"></td>
-    </tr>
-    <tr>
         <th>Day</th>
-        <td id="day"></td>
-    </tr>
-    <tr>
         <th>Weekday</th>
-        <td id="weekday"></td>
-    </tr>
-    <tr>
         <th>Start Time</th>
-        <td id="start-time"></td>
-    </tr>
-    <tr>
         <th>Title</th>
-        <td id="title"></td>
-    </tr>
-    <tr>
         <th>Venue</th>
-        <td id="venue"></td>
     </tr>
 </table>
 
 <script>
-fetch('event.json')
+fetch('events.json')
     .then(response => response.json())
     .then(data => {
-        document.getElementById('year').textContent = data.Year;
-        document.getElementById('month').textContent = data.Month;
-        document.getElementById('day').textContent = data.Day;
-        document.getElementById('weekday').textContent = data.Weekday;
-        document.getElementById('start-time').textContent = data['Start Time'];
-        document.getElementById('title').textContent = data.title;
-        document.getElementById('venue').textContent = data.Venue;
+        data.forEach(event => {
+            const table = document.querySelector('table');
+            const row = table.insertRow(-1);
+            row.insertCell().textContent = event.Year;
+            row.insertCell().textContent = event.Month;
+            row.insertCell().textContent = event.Day;
+            row.insertCell().textContent = event.Weekday;
+            row.insertCell().textContent = event['Start Time'];
+            row.insertCell().textContent = event.title;
+            row.insertCell().textContent = event.Venue;
+        });
     })
     .catch(error => console.error('Error:', error));
 </script>
