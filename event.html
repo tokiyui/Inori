@@ -30,8 +30,21 @@
 
     <table id="eventTable">
         <tr>
-            <th>Field</th>
-            <th>Value</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>Weekday</th>
+            <th>Start Time</th>
+            <th>class1</th>
+            <th>class2</th>
+            <th>class3</th>
+            <th>Title</th>
+            <th>Title2</th>
+            <th>Prefecture</th>
+            <th>Venue</th>
+            <th>With</th>
+            <th>Info</th>
+            <th>ID</th>
         </tr>
     </table>
 
@@ -40,14 +53,14 @@
             .then(response => response.json())
             .then(data => {
                 const eventTable = document.getElementById('eventTable');
+                const row = eventTable.insertRow();
 
-                for (const key in data) {
-                    const row = eventTable.insertRow();
-                    const cell1 = row.insertCell();
-                    const cell2 = row.insertCell();
-                    cell1.textContent = key;
-                    cell2.textContent = data[key];
-                }
+                const fields = ['Year', 'Month', 'Day', 'Weekday', 'Start Time', 'class1', 'class2', 'class3', 'title', 'title2', 'prefecture', 'Venue', 'with', 'info', 'id'];
+
+                fields.forEach(field => {
+                    const cell = row.insertCell();
+                    cell.textContent = data[field];
+                });
             })
             .catch(error => console.error('Error fetching event data: ', error));
     </script>
