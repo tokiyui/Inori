@@ -69,11 +69,12 @@
         const tbody = eventTable.createTBody();
 
         for (const key in data) {
+            const value = data[key];
             const row = tbody.insertRow();
             const cell1 = row.insertCell(0);
             const cell2 = row.insertCell(1);
             cell1.textContent = key;
-            cell2.textContent = data[key];
+            cell2.textContent = value;
             cell2.setAttribute('data-label', key);
         }
     })
