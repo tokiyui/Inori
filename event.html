@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Information</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Details</title>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
 
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
 </head>
-
 <body>
 
-    <h2>Event Information</h2>
+<table>
+    <tr>
+        <th>Year</th>
+        <td id="year"></td>
+    </tr>
+    <tr>
+        <th>Month</th>
+        <td id="month"></td>
+    </tr>
+    <tr>
+        <th>Day</th>
+        <td id="day"></td>
+    </tr>
+    <tr>
+        <th>Weekday</th>
+        <td id="weekday"></td>
+    </tr>
+    <tr>
+        <th>Start Time</th>
+        <td id="start-time"></td>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <td id="title"></td>
+    </tr>
+    <tr>
+        <th>Venue</th>
+        <td id="venue"></td>
+    </tr>
+</table>
 
-    <table id="eventTable">
-        <tr>
-            <th>Year</th>
-            <th>Month</th>
-            <th>Day</th>
-            <th>Weekday</th>
-            <th>Start Time</th>
-            <th>class1</th>
-            <th>class2</th>
-            <th>class3</th>
-            <th>Title</th>
-            <th>Title2</th>
-            <th>Prefecture</th>
-            <th>Venue</th>
-            <th>With</th>
-            <th>Info</th>
-            <th>ID</th>
-        </tr>
-    </table>
-
-    <script>
-        fetch('event.json')
-            .then(response => response.json())
-            .then(data => {
-                const eventTable = document.getElementById('eventTable');
-                const row = eventTable.insertRow();
-
-                const keys = ['Year', 'Month', 'Day', 'Weekday', 'Start Time', 'class1', 'class2', 'class3', 'title', 'title2', 'prefecture', 'Venue', 'sponsor', 'info', 'id'];
-
-                keys.forEach(key => {
-                    const cell = row.insertCell();
-                    cell.textContent = data[key];
-                });
-            })
-            .catch(error => console.error('Error fetching event data: ', error));
-    </script>
+<script>
+fetch('event.json')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('year').textContent = data.Year;
+        document.getElementById('month').textContent = data.Month;
+        document.getElementById('day').textContent = data.Day;
+        document.getElementById('weekday').textContent = data.Weekday;
+        document.getElementById('start-time').textContent = data['Start Time'];
+        document.getElementById('title').textContent = data.title;
+        document.getElementById('venue').textContent = data.Venue;
+    })
+    .catch(error => console.error('Error:', error));
+</script>
 
 </body>
-
 </html>
