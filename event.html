@@ -1,74 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Event Details</title>
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-    }
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
 
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
+
 <body>
 
-<table>
-    <tr>
-        <th>年</th>
-        <th>月</th>
-        <th>日</th>
-        <th>曜日</th>
-        <th>時刻</th>
-        <th>大分類</th>
-        <th>中分類</th> 
-        <th>小分類</th>
-        <th>タイトル</th>
-        <th>詳細タイトル</th>
-        <th>都道府県</th>
-        <th>会場</th>
-        <th>with</th>
-        <th>備考</th>
-        <th>セットリスト</th>
-    </tr>
-</table>
+    <div>
+        <label for="yearSelect">Select a year:</label>
+        <select id="yearSelect">
+            <option value="all">All Years</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+        </select>
+    </div>
 
-<script>
-fetch('event.json')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(event => {
-            const table = document.querySelector('table');
-            const row = table.insertRow(-1);
-            row.insertCell().textContent = event.Year;
-            row.insertCell().textContent = event.Month;
-            row.insertCell().textContent = event.Day;
-            row.insertCell().textContent = event.Weekday;
-            row.insertCell().textContent = event['Start Time'];
-            row.insertCell().textContent = event.class1;
-            row.insertCell().textContent = event.class2;
-            row.insertCell().textContent = event.class3;
-            row.insertCell().textContent = event.title;
-            row.insertCell().textContent = event.title2;
-            row.insertCell().textContent = event.prefecture;
-            row.insertCell().textContent = event.Venue;
-            row.insertCell().textContent = event.sponsor;
-            row.insertCell().textContent = event.info;
-            row.insertCell().textContent = event.id;
-        });
-    })
-    .catch(error => console.error('Error:', error));
-</script>
+    <table id="eventTable">
+        <tr>
+            <th>年</th>
+            <th>月</th>
+            <th>日</th>
+            <th>曜日</th>
+            <th>時刻</th>
+            <th>大分類</th>
+            <th>中分類</th>
+            <th>小分類</th>
+            <th>タイトル</th>
+            <th>詳細タイトル</th>
+            <th>都道府県</th>
+            <th>会場</th>
+            <th>with</th>
+            <th>備考</th>
+            <th>セットリスト</th>
+        </tr>
+    </table>
+
+    <script>
+        fetch('event.json')
+            .then(response => response.json())
+            .then(data => {
+                const eventTable = document.getElementById('eventTable');
+
+                function populateTable(data) {
+                    eventTable.innerHTML = '<tr><th>年</th><th>月</th><th>日</th><th>曜日</th><th>時刻</th><th>大分類</th><th>中分類</th><th>小分類</th><th>タイトル</th><th>詳細タイトル</th><th>都道府県</th><th>会場</th><th>with</th><th>備考</th><th>セットリスト</th></tr>';
+
+                    data.forEach(event => {
+                        const row = eventTable.insertRow(-1);
+                        row.insertCell().textContent = event.Year;
+                        row.insertCell().textContent = event.Month;
+                        row.insertCell().textContent = event.Day;
+                        row.insertCell().textContent = event.Weekday;
+                        row.insertCell().textContent = event['Start Time'];
+                        row.insertCell().textContent = event.class1;
+                        row.insertCell().textContent = event.class2;
+                        row.insertCell().textContent = event.class3;
+                        row.insertCell().textContent = event.title;
+                        row.insertCell().textContent = event.title2;
+                        row.insertCell().textContent = event.prefecture;
+                        row.insertCell().textContent = event.Venue;
+                        row.insertCell().textContent = event.sponsor;
+                        row.insertCell().textContent = event.info;
+                        row.insertCell().textContent = event.id;
+                    });
+                }
+
+                populateTable(data);
+
+                const yearSelect = document.getElementById('yearSelect');
+                yearSelect.addEventListener('change', () => {
+                    const selectedYear = yearSelect.value;
+                    if (selectedYear === 'all') {
+                        populateTable(data);
+                    } else {
+                        const filteredData = data.filter(event => event.Year === selectedYear);
+                        populateTable(filteredData);
+                    }
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 
 </body>
+
 </html>
