@@ -115,7 +115,15 @@
                         row.insertCell().textContent = event.Venue;
                         row.insertCell().textContent = event.sponsor;
                         row.insertCell().textContent = event.info;
-                        row.insertCell().textContent = event.id;
+                        if (event.id) {
+                            const setlistCell = row.insertCell();
+                            const setlistLink = document.createElement('a');
+                            setlistLink.href = `https://tokiyui.github.io/YuiData/subpage/setlist.html?id=${event.id}`;
+                            setlistLink.textContent = 'セットリスト';
+                            setlistCell.appendChild(setlistLink);
+                        } else {
+                            row.insertCell().textContent = '';
+                        }
                     });
                 }
 
@@ -123,6 +131,7 @@
 
                 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
                 checkboxes.forEach(checkbox => {
+                    
                     checkbox.addEventListener('change', () => {
                         const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
                         const selectedMonths = [...document.querySelectorAll('input[type="checkbox"][id^="month"]:checked')].map(cb => cb.value);
