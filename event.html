@@ -59,6 +59,16 @@
         <input type="checkbox" id="month11" value="11">11
         <input type="checkbox" id="month12" value="12">12
     </div>    
+    <div>
+        <label for="youbiCheckboxes">曜日</label>
+        <input type="checkbox" id="youbi1" value="日">日
+        <input type="checkbox" id="youbi2" value="月">月
+        <input type="checkbox" id="youbi3" value="火">火
+        <input type="checkbox" id="youbi4" value="水">水
+        <input type="checkbox" id="youbi5" value="木">木
+        <input type="checkbox" id="youbi6" value="金">金
+        <input type="checkbox" id="youbi7" value="土">土
+    </div>  
     
     <table id="eventTable">
         <tr>
@@ -116,10 +126,12 @@
                     checkbox.addEventListener('change', () => {
                         const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
                         const selectedMonths = [...document.querySelectorAll('input[type="checkbox"][id^="month"]:checked')].map(cb => cb.value);
+                        const selectedYoubis = [...document.querySelectorAll('input[type="checkbox"][id^="youbi"]:checked')].map(cb => cb.value);
 
                         const filteredData = data.filter(event => 
                             (selectedYears.length === 0 || selectedYears.includes(event.Year)) && 
-                            (selectedMonths.length === 0 || selectedMonths.includes(event.Month))
+                            (selectedMonths.length === 0 || selectedMonths.includes(event.Month)) &&
+                            (selectedYoubis.length === 0 || selectedYoubis.includes(event.Youbi))
                         );
                         populateTable(filteredData);
                     });
