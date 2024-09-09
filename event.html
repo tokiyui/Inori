@@ -30,8 +30,16 @@
         <th>日</th>
         <th>曜日</th>
         <th>時刻</th>
+        <th>大分類</th>
+        <th>中分類</th> 
+        <th>小分類</th>
         <th>タイトル</th>
+        <th>詳細タイトル</th>
+        <th>都道府県</th>
         <th>会場</th>
+        <th>with</th>
+        <th>備考</th>
+        <th>セットリスト</th>
     </tr>
 </table>
 
@@ -47,8 +55,16 @@ fetch('event.json')
             row.insertCell().textContent = event.Day;
             row.insertCell().textContent = event.Weekday;
             row.insertCell().textContent = event['Start Time'];
+            row.insertCell().textContent = event.class1;
+            row.insertCell().textContent = event.class2;
+            row.insertCell().textContent = event.class3;
             row.insertCell().textContent = event.title;
+            row.insertCell().textContent = event.title2;
+            row.insertCell().textContent = event.prefecture;
             row.insertCell().textContent = event.Venue;
+            row.insertCell().textContent = event.sponsor;
+            row.insertCell().textContent = event.info;
+            row.insertCell().textContent = event.id;
         });
     })
     .catch(error => console.error('Error:', error));
