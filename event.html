@@ -44,21 +44,20 @@
         <input type="checkbox" id="year2023" value="2023">2023
         <input type="checkbox" id="year2024" value="2024">2024
     </div>
-        <input type="checkbox" id="month01" value="01">01
-        <input type="checkbox" id="month02" value="02">02
-        <input type="checkbox" id="month03" value="03">03
-        <input type="checkbox" id="month04" value="04">04
-        <input type="checkbox" id="month05" value="05">05
-        <input type="checkbox" id="month06" value="06">06
-        <input type="checkbox" id="month07" value="07">07
-        <input type="checkbox" id="month08" value="08">08
-        <input type="checkbox" id="month09" value="09">09
+    <div>
+        <label for="monthCheckboxes">月</label>
+        <input type="checkbox" id="month1" value="1">1
+        <input type="checkbox" id="month2" value="2">2
+        <input type="checkbox" id="month3" value="3">3
+        <input type="checkbox" id="month4" value="4">4
+        <input type="checkbox" id="month5" value="5">5
+        <input type="checkbox" id="month6" value="6">6
+        <input type="checkbox" id="month7" value="7">7
+        <input type="checkbox" id="month8" value="8">8
+        <input type="checkbox" id="month9" value="9">9
         <input type="checkbox" id="month10" value="10">10
         <input type="checkbox" id="month11" value="11">11
         <input type="checkbox" id="month12" value="12">12
-    <div>
-        <label for="yearCheckboxes">月</label>
-
     </div>    
     
     <table id="eventTable">
@@ -115,9 +114,13 @@
                 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
                 checkboxes.forEach(checkbox => {
                     checkbox.addEventListener('change', () => {
-                        const selectedYears = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value);
+                        const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
+                        const selectedMonths = [...document.querySelectorAll('input[type="checkbox"][id^="month"]:checked')].map(cb => cb.value);
 
-                        const filteredData = data.filter(event => selectedYears.length === 0 || selectedYears.includes(event.Year));
+                        const filteredData = data.filter(event => 
+                            (selectedYears.length === 0 || selectedYears.includes(event.Year)) && 
+                            (selectedMonths.length === 0 || selectedMonths.includes(event.Month))
+                        );
                         populateTable(filteredData);
                     });
                 });
