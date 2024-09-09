@@ -27,25 +27,29 @@
 <body>
 
     <div>
-        <label for="yearSelect">Select a year:</label>
-        <select id="yearSelect">
-            <option value="all">All Years</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-        </select>
+        <label for="yearCheckboxes">Select year(s):</label><br>
+        <input type="checkbox" id="year2010" value="2010">
+        <label for="year2010">2010</label><br>
+        <input type="checkbox" id="year2011" value="2011">
+        <label for="year2011">2011</label><br>
+        <input type="checkbox" id="year2012" value="2012">
+        <label for="year2012">2012</label><br>
+        <input type="checkbox" id="year2013" value="2013">
+        <label for="year2013">2013</label><br>
+        <input type="checkbox" id="year2014" value="2014">
+        <label for="year2014">2014</label><br>
+        <input type="checkbox" id="year2015" value="2015">
+        <label for="year2015">2015</label><br>
+        <input type="checkbox" id="year2016" value="2016">
+        <label for="year2016">2016</label><br>
+        <input type="checkbox" id="year2017" value="2017">
+        <label for="year2017">2017</label><br>
+        <input type="checkbox" id="year2018" value="2018">
+        <label for="year2018">2018</label><br>
+        <input type="checkbox" id="year2019" value="2019">
+        <label for="year2019">2019</label><br>
+        <input type="checkbox" id="year2020" value="2020">
+        <label for="year2020">2020</label><br>
     </div>
 
     <table id="eventTable">
@@ -99,15 +103,14 @@
 
                 populateTable(data);
 
-                const yearSelect = document.getElementById('yearSelect');
-                yearSelect.addEventListener('change', () => {
-                    const selectedYear = yearSelect.value;
-                    if (selectedYear === 'all') {
-                        populateTable(data);
-                    } else {
-                        const filteredData = data.filter(event => event.Year === selectedYear);
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        const selectedYears = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value);
+
+                        const filteredData = data.filter(event => selectedYears.length === 0 || selectedYears.includes(event.Year));
                         populateTable(filteredData);
-                    }
+                    });
                 });
             })
             .catch(error => console.error('Error:', error));
