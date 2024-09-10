@@ -26,50 +26,18 @@
 
 <body>
 
-    <div>
+    <div id="yearCheckboxes">
         <label for="yearCheckboxes">年</label>
-        <input type="checkbox" id="year2010" value="2010">2010
-        <input type="checkbox" id="year2011" value="2011">2011
-        <input type="checkbox" id="year2012" value="2012">2012
-        <input type="checkbox" id="year2013" value="2013">2013
-        <input type="checkbox" id="year2014" value="2014">2014
-        <input type="checkbox" id="year2015" value="2015">2015
-        <input type="checkbox" id="year2016" value="2016">2016
-        <input type="checkbox" id="year2017" value="2017">2017
-        <input type="checkbox" id="year2018" value="2018">2018
-        <input type="checkbox" id="year2019" value="2019">2019
-        <input type="checkbox" id="year2020" value="2020">2020
-        <input type="checkbox" id="year2021" value="2021">2021
-        <input type="checkbox" id="year2022" value="2022">2022
-        <input type="checkbox" id="year2023" value="2023">2023
-        <input type="checkbox" id="year2024" value="2024">2024
     </div>
-    <div>
+
+    <div id="monthCheckboxes">
         <label for="monthCheckboxes">月</label>
-        <input type="checkbox" id="month1" value="1">1
-        <input type="checkbox" id="month2" value="2">2
-        <input type="checkbox" id="month3" value="3">3
-        <input type="checkbox" id="month4" value="4">4
-        <input type="checkbox" id="month5" value="5">5
-        <input type="checkbox" id="month6" value="6">6
-        <input type="checkbox" id="month7" value="7">7
-        <input type="checkbox" id="month8" value="8">8
-        <input type="checkbox" id="month9" value="9">9
-        <input type="checkbox" id="month10" value="10">10
-        <input type="checkbox" id="month11" value="11">11
-        <input type="checkbox" id="month12" value="12">12
-    </div>    
-    <div>
+    </div>
+
+    <div id="youbiCheckboxes">
         <label for="youbiCheckboxes">曜日</label>
-        <input type="checkbox" id="youbi1" value="日">日
-        <input type="checkbox" id="youbi2" value="月">月
-        <input type="checkbox" id="youbi3" value="火">火
-        <input type="checkbox" id="youbi4" value="水">水
-        <input type="checkbox" id="youbi5" value="木">木
-        <input type="checkbox" id="youbi6" value="金">金
-        <input type="checkbox" id="youbi7" value="土">土
-    </div>  
-    
+    </div>
+
     <table id="eventTable">
         <tr>
             <th>年</th>
@@ -91,62 +59,28 @@
     </table>
 
     <script>
-        fetch('event.json')
-            .then(response => response.json())
-            .then(data => {
-                const eventTable = document.getElementById('eventTable');
+        const checkboxesData = [
+            { id: 'year', label: '年', start: 2010, end: 2024 },
+            { id: 'month', label: '月', start: 1, end: 12 },
+            { id: 'youbi', label: '曜日', values: ['日', '月', '火', '水', '木', '金', '土'] }
+        ];
 
-                function populateTable(data) {
-                    eventTable.innerHTML = '<tr><th>年</th><th>月</th><th>日</th><th>曜日</th><th>時刻</th><th>大分類</th><th>中分類</th><th>小分類</th><th>タイトル</th><th>詳細タイトル</th><th>都道府県</th><th>会場</th><th>with</th><th>備考</th><th>セットリスト</th></tr>';
+        checkboxesData.forEach(checkboxData => {
+            const checkboxDiv = document.getElementById(`${checkboxData.id}Checkboxes`);
+            const label = document.createElement('label');
+            label.textContent = checkboxData.label;
+            checkboxDiv.appendChild(label);
 
-                    data.forEach(event => {
-                        const row = eventTable.insertRow(-1);
-                        row.insertCell().textContent = event.Year;
-                        row.insertCell().textContent = event.Month;
-                        row.insertCell().textContent = event.Day;
-                        row.insertCell().textContent = event.Weekday;
-                        row.insertCell().textContent = event['Start Time'];
-                        row.insertCell().textContent = event.class1;
-                        row.insertCell().textContent = event.class2;
-                        row.insertCell().textContent = event.class3;
-                        row.insertCell().textContent = event.title;
-                        row.insertCell().textContent = event.title2;
-                        row.insertCell().textContent = event.prefecture;
-                        row.insertCell().textContent = event.Venue;
-                        row.insertCell().textContent = event.sponsor;
-                        row.insertCell().textContent = event.info;
-                        if (event.id) {
-                            const setlistCell = row.insertCell();
-                            const setlistLink = document.createElement('a');
-                            setlistLink.href = `https://tokiyui.github.io/Inori/sub/setlist.html?id=${event.id}`;
-                            setlistLink.textContent = 'セットリスト';
-                            setlistCell.appendChild(setlistLink);
-                        } else {
-                            row.insertCell().textContent = '';
-                        }
-                    });
-                }
-
-                populateTable(data);
-
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(checkbox => {
-                    
-                    checkbox.addEventListener('change', () => {
-                        const selectedYears = [...document.querySelectorAll('input[type="checkbox"][id^="year"]:checked')].map(cb => cb.value);
-                        const selectedMonths = [...document.querySelectorAll('input[type="checkbox"][id^="month"]:checked')].map(cb => cb.value);
-                        const selectedYoubis = [...document.querySelectorAll('input[type="checkbox"][id^="youbi"]:checked')].map(cb => cb.value);
-
-                        const filteredData = data.filter(event => 
-                            (selectedYears.length === 0 || selectedYears.includes(event.Year)) && 
-                            (selectedMonths.length === 0 || selectedMonths.includes(event.Month)) &&
-                            (selectedYoubis.length === 0 || selectedYoubis.includes(event.Weekday))
-                        );
-                        populateTable(filteredData);
-                    });
-                });
-            })
-            .catch(error => console.error('Error:', error));
+            for (let i = checkboxData.start; i <= (checkboxData.end || checkboxData.values.length); i++) {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `${checkboxData.id}${i}`;
+                checkbox.value = i;
+                checkbox.label = i;
+                checkboxDiv.appendChild(checkbox);
+                checkboxDiv.appendChild(document.createTextNode(i));
+            }
+        });
     </script>
 
 </body>
