@@ -64,6 +64,103 @@
             "MELODY FLAG"
         ]
     },
+
+     {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 北海道公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年10月19日",
+        "venue": "カナモトホール",
+        "id": "2024101901",
+        "setlist": [
+            "We Are The Music",
+            "ピュアフレーム",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "水彩メモリー",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "三月と群青",
+            "Starry Wish",
+            "灯籠光柱",
+            "心つかまえて",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "Step Up!",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
+   {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 福岡公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年10月12日",
+        "venue": "福岡サンパレス",
+        "id": "2024101201",
+        "setlist": [
+            "We Are The Music",
+            "ピュアフレーム",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "水彩メモリー",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "星屑のコントレイル",
+            "Starry Wish",
+            "灯籠光柱",
+            "心つかまえて",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "僕らだけの鼓動",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
+   {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 愛知公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年10月5日",
+        "venue": "名古屋国際会議場 センチュリーホール",
+        "id": "2024100501",
+        "setlist": [
+            "We Are The Music",
+            "Sweet Melody",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "水彩メモリー",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "星屑のコントレイル",
+            "Starry Wish",
+            "灯籠光柱",
+            "My Graffiti",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "僕らだけの鼓動",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
     {
         "LIVEtitle": "KING SUPER LIVE 2024 day2",
         "tourtitle": "KING SUPER LIVE",
