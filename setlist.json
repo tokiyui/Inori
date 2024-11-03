@@ -172,6 +172,70 @@
             "アイオライト"
         ]
     },
+   {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 広島公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年9月21日",
+        "venue": "上野学園ホール",
+        "id": "2024092101",
+        "setlist": [
+            "We Are The Music",
+            "Sweet Melody",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "夏夢",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "星屑のコントレイル",
+            "Starry Wish",
+            "灯籠光柱",
+            "心つかまえて",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "Step Up!",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
+   {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 兵庫公演",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年9月15日",
+        "venue": "ワールド記念ホール",
+        "id": "2024091501",
+        "setlist": [
+            "We Are The Music",
+            "Sweet Melody",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "夏夢",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "星屑のコントレイル",
+            "Starry Wish",
+            "灯籠光柱",
+            "My Graffiti",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "僕らだけの鼓動",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
     {
         "LIVEtitle": "KING SUPER LIVE 2024 day1",
         "tourtitle": "KING SUPER LIVE",
