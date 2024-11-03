@@ -1,5 +1,70 @@
 [
     {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 千葉公演2日目",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年11月3日",
+        "venue": "LaLa arena TOKYO-BAY",
+        "id": "2024110301",
+        "setlist": [
+            "We Are The Music",
+            "Sweet Melody",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "夏夢",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "三月と群青",
+            "Starry Wish",
+            "灯籠光柱",
+            "My Graffiti",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "Step Up!",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ],
+        "Wencore": "Ready Steady Go!"
+    },
+    {
+        "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 千葉公演1日目",
+        "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
+        "date": "2024年11月2日",
+        "venue": "LaLa arena TOKYO-BAY",
+        "id": "2024110201",
+        "setlist": [
+            "We Are The Music",
+            "ピュアフレーム",
+            "Ring of Smile",
+            "ほしとね、",
+            "ソライロ",
+            "フラーグム",
+            "Kitty Cat Adventure",
+            "グラデーション",
+            "水彩メモリー",
+            "スクラップアート",
+            "アイオライト",
+            "八月のスーベニア",
+            "星屑のコントレイル",
+            "Starry Wish",
+            "灯籠光柱",
+            "心つかまえて",
+            "glow",
+            "heart bookmark"
+        ],
+        "encore": [
+            "僕らだけの鼓動",
+            "笑顔が似合う日",
+            "MELODY FLAG"
+        ]
+    },
+    {
         "LIVEtitle": "KING SUPER LIVE 2024 day2",
         "tourtitle": "KING SUPER LIVE",
         "date": "2024年5月12日",
