@@ -162,17 +162,6 @@
         ]
     },
     {
-        "LIVEtitle": "KING SUPER LIVE 2024 day2",
-        "tourtitle": "KING SUPER LIVE",
-        "date": "2024年5月12日",
-        "venue": "Kアリーナ横浜",
-        "id": "2024051201",
-        "setlist": [
-            "スクラップアート",
-            "アイオライト"
-        ]
-    },
-   {
         "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 広島公演",
         "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
         "date": "2024年9月21日",
@@ -193,7 +182,7 @@
             "八月のスーベニア",
             "星屑のコントレイル",
             "Starry Wish",
-            "灯籠光柱",
+            "燈籠光柱",
             "心つかまえて",
             "glow",
             "heart bookmark"
@@ -204,7 +193,7 @@
             "MELODY FLAG"
         ]
     },
-   {
+    {
         "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 兵庫公演",
         "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
         "date": "2024年9月15日",
@@ -225,7 +214,7 @@
             "八月のスーベニア",
             "星屑のコントレイル",
             "Starry Wish",
-            "灯籠光柱",
+            "燈籠光柱",
             "My Graffiti",
             "glow",
             "heart bookmark"
@@ -234,6 +223,17 @@
             "僕らだけの鼓動",
             "笑顔が似合う日",
             "MELODY FLAG"
+        ]
+    },
+    {
+        "LIVEtitle": "KING SUPER LIVE 2024 day2",
+        "tourtitle": "KING SUPER LIVE",
+        "date": "2024年5月12日",
+        "venue": "Kアリーナ横浜",
+        "id": "2024051201",
+        "setlist": [
+            "スクラップアート",
+            "アイオライト"
         ]
     },
     {
