@@ -50,7 +50,6 @@
 
 function updateSongDetails(songs, CDs, setlists) {
     const songTable = document.getElementById('songTable');
-    let isAscending = true; // デフォルトは昇順
     
     songs.forEach(song => {
         const matchingCDs = [].concat(song.CDtitle).flatMap(songCDtitle => {
