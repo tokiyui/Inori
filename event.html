@@ -170,6 +170,19 @@
                         populateTable(filteredData);
                     });
                 });
+
+                                // チェックボックスのイベントリスナー
+                document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    cb.addEventListener('change', filterData);
+                });
+
+                                // 順序を入れ替えるボタンのイベントリスナー
+                const toggleOrderButton = document.getElementById('toggleOrder');
+                toggleOrderButton.addEventListener('click', () => {
+                    isAscending = !isAscending;
+                    data.reverse(); // データの順序を反転
+                    filterData(); // フィルタリングして再表示
+                });
             })
             .catch(error => console.error('Error:', error));
     </script>
