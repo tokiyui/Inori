@@ -131,8 +131,16 @@ const row = `
     <td>${song.length}</td>
     <td>${formattedCDs}</td>
     <td>${formattedDate}</td>
-</tr>
-`;
+</tr>`;
+
+                                        songData.push({
+                                            title: song.title,
+                                            rowHTML: row,
+                                            performanceCount: performanceData.count,
+                                            latestPerformanceDate: latestPerformanceDate, // 日付のISO形式で保存
+                                            length: song.length,
+                                            releaseDate: formattedDate
+                                        });        
 
         songTable.innerHTML += row;
     });
