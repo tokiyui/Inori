@@ -86,9 +86,8 @@
 
                 // ラジオボタンの選択によるフィルタリングとチェックボックスの条件を反映
                 function filterData() {
-                    const selectedArtist = document.querySelector('input[name="artistFilter"]:checked').id;
-                    let filteredData = filterByArtist(selectedArtist);
-
+                    let filteredData = data;
+                    
                     // filteredDataが空の場合に処理をスキップする
                     if (!filteredData || filteredData.length === 0) {
                         console.log("No data available for the selected artist.");
