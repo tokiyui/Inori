@@ -24,17 +24,17 @@
     <table>
         <thead>
             <tr>
-                <th>楽曲名(クリックすると歌詞が開きます)</th>
+                <th onclick="sortTable('title')">楽曲名(クリックすると歌詞が開きます)</th>
                 <th>MV</th>
                 <th>ライブ映像</th>
-                <th>披露回数</th>
-                <th>最終披露日</th>
+                <th onclick="sortTable('performanceCount')">披露回数</th>
+                <th onclick="sortTable('latestPerformanceDate')">最終披露日</th>
                 <th>作詞</th>
                 <th>作曲</th>
                 <th>編曲</th>
-                <th>長さ</th>
+                <th onclick="sortTable('length')">長さ</th>
                 <th>収録CD(リンク先は公式HPのDiscography)</th>
-                <th>リリース日</th>
+                <th onclick="sortTable('releaseDate')">リリース日</th>
             </tr>
         </thead>
         <tbody id="songTable"></tbody>
@@ -102,7 +102,7 @@ const performanceData = setlists.reduce((acc, setlist) => {
 }, { count: 0, latestDate: null, id: null });
         
         const formattedDate = oldestDate.date !== 'No release date found' ? oldestDate.date : 'No release date found';
-        const latestPerformanceDate = performanceData.latestDate ? formatDateToJapanese(performanceData.latestDate) : '未披露';
+        const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toISOString().split('T')[0] : null;
         const lyricsClass = song.lyrics.includes('水瀬いのり') ? 'cyan-cell' : '';
         const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
  
@@ -124,7 +124,7 @@ const row = `
     <td>${MVLink}</td>
     <td>${videoLink}</td>
     <td><a href="./sub/search.html?name=${song.title}">${performanceData.count}</a></td>
-    <td><a href="./sub/setlist.html?id=${performanceData.id}">${latestPerformanceDate}</a></td>
+    <td><a href="./sub/setlist.html?id=${performanceData.id}">${performanceData.latestDate ? formatDateToJapanese(new Date(performanceData.latestDate)) : '未披露'}</a></td>
     <td class="${lyricsClass}">${song.lyrics}</td>
     <td class="${musicClass}">${song.music}</td>
     <td>${song.arranger}</td>
