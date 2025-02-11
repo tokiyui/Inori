@@ -41,6 +41,13 @@
     </table>
 
 <script>
+        let songData = []; // 追加: 曲データを保存する配列
+        let reverseSortPerformanceCount = true; // 披露回数の逆順フラグ
+        let reverseSortPerformanceDate = true; // 最終披露日の逆順フラグ
+        let reverseSortReleaseDate = false; // リリース日の逆順フラグ
+        let releaseDateToggle = 0; // リリース日ソートの状態を管理
+        let reverseSortLength = false; // 長さのソート用
+    
     function formatDateToJapanese(date) {
         const year = date.getFullYear();
         const month = (date.getMonth() + 1).toString();
@@ -159,6 +166,61 @@ Promise.all([
 
     updateSongDetails(filteredSongs, CDs, setlists);
 }).catch(error => console.error('Failed to fetch data:', error));
+
+    function parseJapaneseDate(dateStr) {
+    // "2009年9月26日" → "2009-09-26" のように変換してDateオブジェクトに変換
+    return new Date(dateStr.replace(/年|月/g, '-').replace(/日/g, ''));
+}
+
+function parseTimeToSeconds(timeStr) {
+    if (!timeStr) return 0; // 空の値は 0 とする
+    const parts = timeStr.split(":");
+    return parseInt(parts[0]) * 60 + parseInt(parts[1]); // 分を秒換算
+}
+
+function sortTable(column) {
+    const songTable = document.getElementById('songTable');
+    let sortedData;
+
+    if (column === 'performanceCount') {
+        sortedData = [...songData].sort((a, b) => 
+            reverseSortPerformanceCount ? b.performanceCount - a.performanceCount : a.performanceCount - b.performanceCount
+        );
+        reverseSortPerformanceCount = !reverseSortPerformanceCount;
+    } else if (column === 'latestPerformanceDate') {
+        sortedData = [...songData].sort((a, b) => {
+            if (!a.latestPerformanceDate) return 1;
+            if (!b.latestPerformanceDate) return -1;
+            return reverseSortPerformanceDate 
+                ? new Date(b.latestPerformanceDate) - new Date(a.latestPerformanceDate) 
+                : new Date(a.latestPerformanceDate) - new Date(b.latestPerformanceDate);
+        });
+        reverseSortPerformanceDate = !reverseSortPerformanceDate;
+    } else if (column === 'releaseDate') {
+        sortedData = [...songData].sort((a, b) => {
+            if (!a.releaseDate) return 1;
+            if (!b.releaseDate) return -1;
+            return reverseSortReleaseDate 
+                ? parseJapaneseDate(b.releaseDate) - parseJapaneseDate(a.releaseDate)
+                : parseJapaneseDate(a.releaseDate) - parseJapaneseDate(b.releaseDate);
+        });
+        reverseSortReleaseDate = !reverseSortReleaseDate;
+    } else if (column === 'length') {
+        sortedData = [...songData].sort((a, b) => {
+            return reverseSortLength 
+                ? parseTimeToSeconds(b.length) - parseTimeToSeconds(a.length)
+                : parseTimeToSeconds(a.length) - parseTimeToSeconds(b.length);
+        });
+        reverseSortLength = !reverseSortLength;
+    } else {
+        sortedData = [...songData].sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    songTable.innerHTML = '';
+    sortedData.forEach(song => {
+        songTable.innerHTML += song.rowHTML;
+    });
+}
 </script>
 </body>
 </html>
