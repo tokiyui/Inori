@@ -25,6 +25,7 @@
         <thead>
             <tr>
                 <th onclick="sortTable('title')">楽曲名(クリックすると歌詞が開きます)</th>
+                <th>コール表</th>
                 <th>MV</th>
                 <th>ライブ映像</th>
                 <th onclick="sortTable('performanceCount')">披露回数</th>
@@ -105,6 +106,8 @@ const performanceData = setlists.reduce((acc, setlist) => {
         const latestPerformanceDate = performanceData.latestDate ? performanceData.latestDate.toISOString().split('T')[0] : null;
         const lyricsClass = song.lyrics.includes('水瀬いのり') ? 'cyan-cell' : '';
         const musicClass = song.music.includes('水瀬いのり') ? 'cyan-cell' : '';
+
+        const callLink = song.call ? `<a href="https://iwao-poke.hatenablog.com/entry/${song.call}" target="_blank">コール表</a>` : '';
  
 const cdLinks = Array.isArray(song.CDtitle)
     ? song.CDtitle.map(cdTitle => {
