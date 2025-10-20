@@ -1,5 +1,89 @@
 [
     {
+        "LIVEtitle": "いのりまち町民集会2025 宮城公演",
+        "tourtitle": "いのりまち町民集会2025",
+        "date": "2025年7月20日",
+        "venue": "仙台サンプラザホール",
+        "id": "2025072001",
+        "setlist": [
+            "シネマチックダイアリー",
+            "Dreaming Girls",
+            "夏の約束",
+            "涙のあとは",
+            "風色Letter",
+            "Will",
+            "クータスタ",
+            "Starry Wish",
+            "パレオトピア",
+            "クリスタライズ",
+            "今を僕らしく生きてくために"
+        ],
+        "encore": "REAL-EYES"
+    },
+    {
+        "LIVEtitle": "いのりまち町民集会2025 大阪公演",
+        "tourtitle": "いのりまち町民集会2025",
+        "date": "2025年7月12日",
+        "venue": "箕面市立文化芸能劇場",
+        "id": "2025071201",
+        "setlist": [
+            "シネマチックダイアリー",
+            "Dreaming Girls",
+            "夏の約束",
+            "運命の赤い糸",
+            "風色Letter",
+            "Will",
+            "クータスタ",
+            "Starry Wish",
+            "パレオトピア",
+            "クリスタライズ",
+            "今を僕らしく生きてくために"
+        ],
+        "encore": "REAL-EYES"
+    },
+    {
+        "LIVEtitle": "いのりまち町民集会2025 埼玉夜公演",
+        "tourtitle": "いのりまち町民集会2025",
+        "date": "2025年7月6日",
+        "venue": "大宮ソニックシティ",
+        "id": "2025070601",
+        "setlist": [
+            "シネマチックダイアリー",
+            "Dreaming Girls",
+            "夏の約束",
+            "涙のあとは",
+            "風色Letter",
+            "Will",
+            "クータスタ",
+            "Starry Wish",
+            "パレオトピア",
+            "クリスタライズ",
+            "今を僕らしく生きてくために"
+        ],
+        "encore": "REAL-EYES"
+    },
+    {
+        "LIVEtitle": "いのりまち町民集会2025 埼玉昼公演",
+        "tourtitle": "いのりまち町民集会2025",
+        "date": "2025年7月6日",
+        "venue": "大宮ソニックシティ",
+        "id": "2025070601",
+        "setlist": [
+            "シネマチックダイアリー",
+            "Dreaming Girls",
+            "夏の約束",
+            "運命の赤い糸",
+            "風色Letter",
+            "Will",
+            "クータスタ",
+            "Starry Wish",
+            "パレオトピア",
+            "クリスタライズ",
+            "今を僕らしく生きてくために"
+        ],
+        "encore": "REAL-EYES"
+    },
+    {
         "LIVEtitle": "Inori Minase LIVE TOUR 2024 heart bookmark 千葉公演2日目",
         "tourtitle": "Inori Minase LIVE TOUR 2024 heart bookmark",
         "date": "2024年11月3日",
