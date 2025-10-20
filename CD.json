@@ -109,8 +109,20 @@
     },
     {
         "CDtitle": "heart bookmark",
-        "type": "album",
+        "type": "halfalbum",
         "date": "2024年8月21日",
         "discoid": "61"
+    },
+    {
+        "CDtitle": "Turquoise",
+        "type": "halfalbum",
+        "date": "2025年9月3日",
+        "discoid": "72"
+    },
+    {
+        "CDtitle": "Travel Record",
+        "type": "album",
+        "date": "2025年9月3日",
+        "discoid": "73"
     }
 ]
